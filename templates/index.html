@@ -1,0 +1,1086 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Usabilidad Web</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dropdown.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.css' %}">
+    <style>
+        html,
+        body,
+        .view{
+            height: 100%;
+        }
+
+        .navbar {
+            background-color: transparent;
+        }
+
+        a{
+            text-align: center;
+        }
+
+        .scrolling-navbar {
+            -webkit-transition: background .5s ease-in-out, padding .5s ease-in-out;
+            -moz-transition: background .5s ease-in-out, padding .5s ease-in-out;
+            transition: background .5s ease-in-out, padding .5s ease-in-out;
+        }
+
+        .top-nav-collapse {
+            background-color: #3c4f74;
+        }
+
+        footer.page-footer {
+            background-color: #3c4f74;
+            margin-top: 2rem;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                background-color: #1C2331;
+            }
+            .objects-init
+            {
+                margin-top: 3rem;
+            }
+        }
+        @media only screen and (max-height: 480px) {
+            .objects-init
+            {
+                margin-top: 7rem;
+            }
+        }
+        /*Call to action*/
+
+        .flex-center {
+            color: #fff;
+        }
+
+        .view {
+            background: url("{% static 'img/mockup.jpg' %}")no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+        /*Contact section*/
+
+        #contact .fa {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1C2331;
+        }
+    </style>
+</head>
+<body>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-toggleable-md navbar-dark fixed-top scrolling-navbar">
+        <div class="container" >
+            <button class="navbar-toggler navbar-toggler-right"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav1"
+                    aria-controls="navbarNav1"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="vertical-align:middle;text-align:left">
+                <h3>
+                    <strong>
+                        Usabilidad<br>
+                        Aplicaciones Web
+                    </strong>
+                </h3>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav1">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link">
+                            <i class="fa fa-heart fa-2x blue-text"></i><br>
+                            Menú
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#analysis">
+                            <i class="fa fa-pie-chart fa-2x blue-text"></i><br>
+                            Análisis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#best-features">
+                            <i class="fa fa-address-book fa-2x blue-text"></i><br>
+                            Objetivos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            <i class="fa fa-envelope fa-2x blue-text"></i><br>
+                            Contactos
+                        </a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="#"
+                           class="dropdown-toggle nav-link"
+                           data-toggle="dropdown"
+                           role="button"
+                           aria-expanded="false">
+                           <i class="fa fa-diamond fa-2x blue-text"></i><br>
+                           Metodologías
+                       </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">SCRUM</a></li>
+                            <li><a href="#">XP</a></li>
+                            <li><a href="#">AUP</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">IWeb</a></li>
+                            <li><a href="#">Incremental</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">RUP</a></li>
+                            <li><a href="#">Cascada</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--/.Navbar-->
+
+    <!--Mask-->
+    <div class="view hm-black-strong">
+        <div class="full-bg-img flex-center">
+            <ul class="objects-init">
+                <li>
+                    <h1 class="h1-responsive wow fadeInDown" data-wow-delay="0.2s">
+                        Como Gestionar La Usabilidad
+                    </h1>
+                </li>
+                <li>
+                    <p class="wow fadeInDown">
+                        Identificando Prácticas Para Evaluar La Usabilidad
+                    </p>
+                </li>
+                <li>
+                    <a href="#analysis"
+                       class="btn btn-primary btn-lg wow fadeInLeft"
+                       data-wow-delay="0.2s" rel="nofollow">
+                        Ver Análisis
+                    </a>
+                    <a href="#paperContent"
+                       class="btn btn-default btn-lg wow fadeInRight"
+                       data-wow-delay="0.2s" rel="nofollow">
+                        Metodologías Agiles
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--/.Mask-->
+
+    <!-- Main container-->
+    <div class="container">
+        <div class="row" id="analysis"></div>
+        <br><br>
+        <div class="divider-new">
+            <h2 class="h2-responsive wow fadeIn" data-wow-delay="0.2s">
+                Análisis
+            </h2>
+        </div>
+
+        <!--Section: About-->
+        <section class="text-justify wow fadeIn" data-wow-delay="0.2s">
+            <br>
+            <div class="row">
+                <div class="col-lg-10
+                            offset-lg-1
+                            col-sm-12">
+                    <div class="text-center">
+                        <h4 class="card-title">Ingeniería De Sistemas Universidad De Nariño</h4>
+                        <p>
+                            Trabajos de grado del programa Ingeniería de Sistemas, en el grafo se puede observar el comportamiento a lo largo de los últimos siente años, el desarrollo de Aplicaciones web tiene una curva representativa durante el periodo analizado, así como también las tesis de auditorías. Este estudio abarca los años 2010 hasta 2017 haciendo un análisis documental para evaluar los tipos de tesis llevados a cabo por estudiantes de Ingeniería De Sistemas.
+                        </p>
+                    </div>
+                    <br>
+                    <canvas id="thesis-udenar"></canvas>
+                </div>
+            </div>
+            <br><br>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="text-center">
+                        <h4 class="card-title">
+                            Trabajos De Grado Ingeniería De Sistemas - Universidad De Nariño
+                        </h4>
+                        <p class="card-text">
+                            El siguiente grafico muestra los trabajos de grado desarrollados por los estudiantes de Ingeniería de Sistemas de la Universidad de Nariño en valores porcentuales, para ello se identificó unas características; como el desarrollo de aplicaciones móviles, aplicaciones web, aplicaciones web y móviles, tesis de auditorías y el porcentaje de otras tesis.
+                        </p>
+                    </div>
+                    <br>
+                    <canvas id="porcentajes-trabajos"></canvas>
+                </div>
+            </div>
+            <br><br>
+            <div class="row">
+                <div class="col-lg-10
+                            offset-lg-1
+                            col-sm-12">
+                    <div class="text-center">
+                        <h4 class="card-title">Usabilidad Web Apps</h4>
+                        <p class="card-text">
+                            La adopcion de ingenieria de Usabilidad en la constrccion
+                            de aplicaciones web tiene un porcentaje bajo en los trabajos de
+                            Ingenieria de Sistemas llevados a cabo por estudiantes. Al utilizar
+                            este metodo se podria garantizar que stakeholder y equipo
+                            de desarrollo cumplan epectativas y resposabilidades
+                            respectivamente. Se ha echo un comparativo especifico en aplicaciones web
+                            en cuanto a usabilidad para delimitar
+                            la investigacion, el analisis hace referencia a
+                            la aplicacion de ingenieria de usabilidad. Las evidencias
+                            indican que la construccion de aplicaciones web en los trabajos
+                            de grado no tienen en cuenta el atributo de calidad Usabilidad
+                            definido por IEEE, ISO/IEC 9126, ISO/IEC 25000, Jacob Nielsen... En la
+                            documentacion, en posteriores fases de la investigacion
+                            se planea evaluar aquellos productos a los que se tenga acceso.
+                        </p>
+                    </div>
+                    <br>
+                    <canvas id="usability-webapps"></canvas>
+                </div>
+            </div>
+        </section>
+        <div id="paperContent"></div>
+        <br>
+        <br>
+        <br>
+        <div class="divider-new">
+            <h2 class="h2-responsive wow fadeIn" data-wow-delay="0.2s">Introduction</h2>
+        </div>
+        <!-- <h2 class="h2-responsive wow fadeIn">Agile Methodologies</h2> -->
+        <section class="text-justify wow fadeIn" data-wow-delay="0.2s">
+            <div class="row screen-section  align-items-center">
+                <div class="col-lg-6 overlay hm-white-slight">
+                    <img src="{% static 'img/ipad.jpg' %}" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-6" style="vertical-align:middle">
+                    <h4>
+                        In this study We want to show how important is Usability Evaluation
+                        on Software Construccion,
+                        especially on web apps because people tends to always
+                        connected and they hope to satisfy their expectations.
+                        It has been carry out a study about system engineering
+                        students thesis from University of Nariño since 2010 to 2017 ,
+                        we have encountered some interesting data.
+                    </h4>
+                    <h4>
+                        Our purpose is identified how to manage and include usability
+                        test on software construction into software engineering,
+                        so first we identified the <b>situation</b>, now we are investigating how to
+                        create a good practices about usability evaluation on web apps.
+                    </h4>
+                </div>
+            </div>
+            <br><br><br><br><br><br>
+            <br>
+            <hr>
+
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="text-center">
+                        <h2 class="card-title">Software Development</h2>
+                        <h4 class="alert alert-succes animate fadeInLeftBig">
+                            The System Engineering Program of the University of Nariño,
+                            named for its different approaches. Beetwen networks,
+                            software engineering, audits and computational systems,
+                            which identify it as a program directly related to the computer
+                            science, in the following graphic shows
+                            the percentage of application development.
+                        </h4>
+
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="row" class="text-center">
+
+                <div class="col-lg-6 offset-lg-3">
+                    <canvas id="development"></canvas>
+                </div>
+                <div class="text-center col-lg-8 offset-lg-2">
+                    <ul>
+                        <li><h4 class="light">More than the half developed some kind of software</h4></li>
+                        <li><h4>From that 41.5% more than 60% are audit</h4></li>
+                        <li><h4>The remaining 40% of works that did not developed software are investigations about what?</h4></li>
+                    </ul>
+                </div>
+            </div>
+            <br><br><br><br>
+            <hr>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="text-center">
+                        <h2 class="card-title">Methodologies Applied</h2>
+                        <h4 class="card-text">
+                            As part of this research we find out
+                            the methodologies applied in developed web app by students,
+                            in this specific study we are looking
+                            for how they evaluated their products
+                        </h4>
+
+                    </div>
+                    <br>
+                </div>
+            </div>
+            <div class="row" class="text-center">
+
+                <div class="col-lg-10 offset-lg-1">
+                    <canvas id="methodologies"></canvas>
+                </div>
+                <div class="text-center col-lg-8 offset-lg-2">
+                    <br>
+                    <ul>
+                        <li>
+                            <h4 class="light">
+                                59.26% Applied methodologies under agile manifesto
+                            </h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <br><br><br><br>
+            <hr>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="text-center">
+                        <h2 class="card-title">For What ?</h2>
+                        <div class="wow fadeInLeftBig alert alert-warning">
+                            <h4>
+                                This study is not to to find out problems
+                            </h4>
+                            <h4>
+                                Our hipothesis don't say that something is wrong
+                            </h4>
+                            <!-- <h4>
+                                Our hipothesis don't say that something is wrong
+                            </h4> -->
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="text-center col-lg-10 offset-lg-1">
+                    <div class="text-center">
+                        <div class="wow fadeInLeftBig alert alert-success">
+                            <h4>What is the degree of Applied Software Engineering ?</h4>
+                            <h4>What is the degree veracity of the process ?</h4>
+                            <h4>How can propose alternatives to improve practices ?</h4>
+                            <h4>How improve usability evaluation on web apps development ?</h4>
+                            <h4>All developed web apps are still in production ?</h4>
+                            <h4>What are the consequences if not examine our ways of work ?</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br>
+            <hr>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="text-center">
+                        <h2 class="card-title">How</h2>
+                        <div class="wow fadeInLeftBig alert alert-success">
+                            <h4>Goals</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="card wow fadeIn">
+                        <div class="card-block text-center">
+                            <i class=" wow fadeInDown blue-text text-darken-4 fa fa-users fa-4x"></i>
+                            <h3 class="card-title">Population</h3>
+                            <hr>
+                            <h4 class="card-text wow fadeIn">
+                                Grade work of system engineering students from
+                                Universidad de Nariño that  developed web apps since 2010 to 2017
+                            </h4>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card wow fadeIn" data-wow-delay="0.2s">
+                        <div class="card-block text-center">
+                            <i class=" wow fadeInDown blue-text text-darken-4 fa fa-star-half-o fa-4x"></i>
+                            <h3 class="card-title">Segmentation</h3>
+                            <hr>
+                            <h4 class="card-text">
+                                All documentation about web apps developed under agile methodologies
+                            </h4>
+                            <br><br><br><br>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card wow fadeIn" data-wow-delay="0.6s">
+                        <div class="card-block text-center">
+                            <i class=" wow fadeInDown blue-text text-darken-4 fa fa-cogs fa-4x"></i>
+                            <h3 class="card-title">Technique</h3>
+                            <hr>
+                            <h4 class="card-text">
+                                Get sample applying simple random sample equation with finite population
+                                <br><br>
+                                Evaluate documentation on sample obtained and compare with methodologies
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br>
+            <hr>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="text-center">
+                        <h2 class="card-title">Please Guys Don't Forget Me</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12 align-items-center">
+                    <img src="{% static 'img/ecuation.png' %}" width="100%" height="100%" alt="" align='center'>
+                </div>
+            </div>
+
+            <br><br><br><br><br><br><br>
+            <hr>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="text-center">
+                        <div class="wow fadeInLeftBig bounceIn">
+                            <h1>Thanks</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </section>
+        <!-- <div class="row" id="best-features"></div>
+        <div class="divider-new">
+            <h2 class="h2-responsive wow fadeIn">Goals</h2>
+        </div>
+        <section>
+
+            <div class="row">
+
+                <div class="col-lg-3">
+                    <div class="card wow fadeIn">
+                        <div class="view overlay hm-white-slight">
+                            <img src="{% static 'img/ipad.jpg' %}" class="img-fluid" alt="">
+                            <a>
+                                <div class="mask"></div>
+                            </a>
+                        </div>
+                        <div class="card-block text-center">
+                            <h4 class="card-title">360 Advertising</h4>
+                            <hr>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident fuga animi architecto dolores dicta cum quo velit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card wow fadeIn" data-wow-delay="0.2s">
+                        <div class="view overlay hm-white-slight">
+                            <img src="{% static 'img/ipad.jpg' %}" class="img-fluid" alt="">
+                            <a>
+                                <div class="mask"></div>
+                            </a>
+                        </div>
+                        <div class="card-block text-center">
+                            <h4 class="card-title">Top-class Team</h4>
+                            <hr>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident fuga animi architecto dolores dicta cum quo velit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card wow fadeIn" data-wow-delay="0.4s">
+
+                        <div class="view overlay hm-white-slight">
+                            <img src="{% static 'img/ipad.jpg' %}" class="img-fluid" alt="">
+                            <a>
+                                <div class="mask"></div>
+                            </a>
+                        </div>
+                        <div class="card-block text-center">
+                            <h4 class="card-title">Newest Technolgies</h4>
+                            <hr>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident fuga animi architecto dolores dicta cum quo velit.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="card wow fadeIn" data-wow-delay="0.6s">
+                        <div class="view overlay hm-white-slight">
+                            <img src="{% static 'img/ipad.jpg' %}" class="img-fluid" alt="">
+                            <a>
+                                <div class="mask"></div>
+                            </a>
+                        </div>
+                        <div class="card-block text-center">
+                            <h4 class="card-title">24/7 Support</h4>
+                            <hr>
+                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Provident fuga animi architecto dolores dicta cum quo velit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+        <div class="divider-new">
+            <h2 class="h2-responsive wow fadeIn">Contact Us</h2>
+        </div>
+        <section id="contact">
+            <div class="row">
+                <div class="col-md-8">
+                    <div id="map-container" class="z-depth-1 wow fadeIn" style="height: 300px"></div>
+                </div>
+
+                <div class="col-md-4">
+                    <ul class="text-center">
+                        <li class="wow fadeIn" data-wow-delay="0.2s"><i class="fa fa-map-marker teal-text"></i>
+                            <p>Pasto, Nariño, Colombia</p>
+                        </li>
+
+                        <li class="wow fadeIn" data-wow-delay="0.3s"><i class="fa fa-phone teal-text"></i>
+                            <p>+ 57 316 42 09 796</p>
+                        </li>
+
+                        <li class="wow fadeIn" data-wow-delay="0.4s"><i class="fa fa-envelope teal-text"></i>
+                            <p>chga@udenar.edu.co</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer class="page-footer center-on-small-only">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 offset-lg-1 hidden-lg-down">
+                    <h5 class="title">Web Apps Logo</h5>
+                    <p>. </p>
+
+                    <p>.</p>
+                </div>
+
+                <hr class="hidden-md-up">
+
+                <div class="col-lg-2 col-md-4 offset-lg-1">
+                    <h5 class="title">Investigation</h5>
+                    <ul>
+                        <li><a href="#!">Analize Thesis</a></li>
+                        <li><a href="#!">Applied UE</a></li>
+                    </ul>
+                </div>
+
+                <hr class="hidden-md-up">
+
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="title">Next Steps</h5>
+                    <ul>
+                        <li><a href="#!">Identified Good Practices</a></li>
+                        <li><a href="#!">Get In UE on Software Engineering</a></li>
+                    </ul>
+                </div>
+
+                <hr class="hidden-md-up">
+
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="title">Find Us</h5>
+                    <ul>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-facebook"></i>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-twitter"></i>
+                                Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-youtube"></i>
+                                You Tube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-google-plus"></i>
+                                Google +
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="call-to-action">
+            <h4>Usability Web Apps</h4>
+            <ul>
+                <li>
+                    <h5>Leave Us Your Opinion</h5></li>
+                <li><a target="_blank" href="" class="btn btn-info" rel="nofollow">Register</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                © 2017 Creative Commons</a>
+
+            </div>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tether.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/chart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/dropdown.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script type="text/javascript">
+        //Chart.defaults.global.defaultFontSize = '18';
+        (function() {
+            var ctx = document.getElementById('thesis-udenar').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'line',
+                options:
+                {
+                    animateScale:true,
+                    responsive:true,
+                    scales:
+                    {
+                        xAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            display: true
+                        }],
+                        yAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            display: true
+                        }]
+                    },
+                    // title: {
+                    //     display: true,
+                    //     fontSize: 20,
+                    //     text: 'Trabajos De Grado UDENAR 2010 - 2017'
+                    // },
+                    legend: {
+                        display: true,
+                        position: 'bottom',
+                        labels: {
+                            fontSize:18
+                        }
+                    },
+                },
+                data:
+                {
+                    labels: [{% for Apps in  WebApps %} "{{ Apps.year }}", {% endfor %}],
+                    datasets:
+                    [
+                        {
+                            label: "Movil Apps",
+                            backgroundColor: "rgba(0, 128, 128,0.7)",
+                            strokeColor: "rgba(100,100,100,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,0.5)",
+                            data: [{% for App in  MovilApps %} "{{ App.total }}", {% endfor %}]
+                        },
+                        {
+                            label: "Auditorias",
+                            backgroundColor: "rgba(239, 127, 26,0.4)",
+                            strokeColor: "rgba(100,100,255,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: [{% for Auditoria in  Auditorias %} "{{ Auditoria.total }}", {% endfor %}]
+                        },
+                        {
+                            label: "Web Apps",
+                            backgroundColor: "rgba(0,255,0,0.5)",
+                            fillColor: "rgba(255,0,0,0.8)",
+                            pointColor: "rgba(200,255,200,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(220,220,220,1)",
+                            data: [{% for Apps in  WebApps %} "{{ Apps.total }}", {% endfor %}]
+                        }
+                    ]
+                }
+            });
+        })();
+
+
+
+        (function() {
+            var ctx = document.getElementById('development').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                options:
+                {
+                    showDatapercentages: true,
+                    scales:
+                    {
+                        xAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                display:false
+                            },
+                            display:true
+                        }],
+                        yAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                display:false
+                            },
+                            display:true
+                        }]
+                    },
+                    // title: {
+                    //     display: true,
+                    //     text: 'Construccion de Software',
+                    //     fontSize: 20
+                    // },
+                    legend: {
+                        display: false,
+                        position: 'bottom',
+                        labels: {
+                            fontSize:18
+                        }
+                    },
+                },
+                data:
+                {
+                    labels: ['Si ', 'No '],
+                    datasets:
+                    [
+                        {
+                            label: "Cantidad: ",
+                            backgroundColor: ["rgba(239, 127, 26,0.5)",
+                                              "rgba(0,255,0,0.5)",
+                                              "rgba(0, 128, 128,0.5)"],
+                            data: [{{ Development }}, {{ NoDevelopment }}]
+                        }
+                    ]
+                }
+            });
+        })();
+
+
+
+
+        (function() {
+            var ctx = document.getElementById('usability-webapps').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                options:
+                {
+                    showDatapercentages:true,
+                    scales:
+                    {
+                        xAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                display:false
+                            },
+                            display:true
+                        }],
+                        yAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                display:false
+                            },
+                            display:true
+                        }]
+                    },
+                    // title: {
+                    //     display: true,
+                    //     fontSize: 20,
+                    //     text: 'Especificacion Usabilidad Trabajos De Grado'
+                    // },
+                    legend: {
+                        display: false,
+                        position: 'bottom',
+                        labels: {
+                            fontSize:18
+                        }
+                    },
+                },
+                data:
+                {
+                    labels: ['Si', 'No '],
+                    datasets:
+                    [
+                        {
+                            label: "Especificacion Usabilidad",
+                            backgroundColor: ["rgba(0,255,0,0.5)","rgba(239, 127, 26,0.5)"],
+                            data: ["{{ Usability }}", '{{NoUsability}}']
+                        }
+                    ]
+                }
+            });
+        })();
+
+        Chart.plugins.register({
+            afterDraw: function(chartInstance)
+            {
+                if (chartInstance.config.options.showDatapercentages)
+                {
+                    var helpers = Chart.helpers;
+                    var ctx = chartInstance.chart.ctx;
+                    var fontColor = helpers.getValueOrDefault(chartInstance.config.options.showDatapercentages.fontColor, chartInstance.config.options.defaultFontColor);
+                    ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    ctx.fillStyle = fontColor;
+
+                    chartInstance.data.datasets.forEach(function (dataset)
+                    {
+                        var total = 0;
+                        for (var i = 0; i < dataset.data.length; i++)
+                        {
+                            total += parseInt(dataset.data[i]);
+                        }
+                        for (var i = 0; i < dataset.data.length; i++)
+                        {
+                            var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+                            var scaleMax = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                            var yPos = (scaleMax - model.y) / scaleMax >= 0.93 ? model.y + 20 : model.y - 5;
+                            ctx.fillText(parseFloat((dataset.data[i]/total)*100).toFixed(2) + ' %', model.x, yPos);
+                        }
+                    });
+                }
+            }
+        });
+
+        Chart.plugins.register({
+            afterDraw: function(chartInstance)
+            {
+                if (chartInstance.config.options.showDatapoints)
+                {
+                    var helpers = Chart.helpers;
+                    var ctx = chartInstance.chart.ctx;
+                    var fontColor = helpers.getValueOrDefault(chartInstance.config.options.showDatapoints.fontColor, chartInstance.config.options.defaultFontColor);
+                    ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
+                    ctx.textAlign = 'center';
+                    ctx.textBaseline = 'bottom';
+                    ctx.fillStyle = fontColor;
+
+                    chartInstance.data.datasets.forEach(function (dataset)
+                    {
+                        for (var i = 0; i < dataset.data.length; i++)
+                        {
+                            var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+                            var scaleMax = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                            var yPos = (scaleMax - model.y) / scaleMax >= 0.93 ? model.y + 20 : model.y - 5;
+                            ctx.fillText(dataset.data[i], model.x, yPos);
+                        }
+                    });
+                }
+            }
+        });
+
+        (function() {
+            var ctx = document.getElementById('porcentajes-trabajos').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                options:
+                {
+                    showDatapercentages: true,
+                    animation:{
+                        animateScale:true
+                    },
+                    scales:
+                    {
+                        xAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                display:false
+                            },
+                            display:true
+                        }],
+                        yAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                display:false
+                            },
+                            display:true
+                        }]
+                    },
+                    // title: {
+                    //     display: true,
+                    //     text: 'Trabajos De Grado',
+                    //     fontSize: 20
+                    // },
+                    legend: {
+                        display: false,
+                        // position: 'bottom',
+                        // labels: {
+                        //     fontSize:18
+                        // }
+                    },
+                },
+                data:
+                {
+                    labels: [{% for Type in  Porcentajes %} "{{ Type.type }}", {% endfor %}],
+                    datasets:
+                    [
+                        {
+                            label:'Cantidad: ',
+                            backgroundColor: ["rgba(0,255,100,0.4)",
+                                              "rgba(239, 127, 26,0.4)",
+                                              "rgba(0,255,0,0.4)",
+                                              "rgba(0, 128, 128,0.4"],
+                            data: [{% for Type in  Porcentajes %} "{{ Type.total }}", {% endfor %}]
+                        }
+                    ]
+                }
+            });
+        })();
+
+
+
+
+
+
+        (function() {
+            var ctx = document.getElementById('methodologies').getContext('2d');
+            var chart = new Chart(ctx, {
+                type: 'bar',
+                options:
+                {
+                    showDatapercentages: true,
+                    animation:{
+                        animateScale:true
+                    },
+                    tooltips:{
+                        fontSize: 18,
+                    },
+                    scales:
+                    {
+                        xAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                display:false
+                            },
+                            display:true
+                        }],
+                        yAxes:
+                        [{
+                            ticks: {
+                                beginAtZero: true,
+                                fontSize: 18
+                            },
+                            gridLines: {
+                                display:false
+                            },
+                            display:true
+                        }]
+                    },
+                    // title: {
+                    //     display: true,
+                    //     text: 'Trabajos De Grado',
+                    //     fontSize: 20
+                    // },
+                    legend: {
+                        display: false,
+                        // position: 'bottom',
+                        // labels: {
+                        //     fontSize:18
+                        // }
+                    },
+                },
+                data:
+                {
+                    labels: [{% for Method in  Methodologies %} "{{ Method.name }}", {% endfor %}],
+                    datasets:
+                    [
+                        {
+                            label:'Cantidad: ',
+                            backgroundColor: ["rgba(0,255,100,0.4)",
+                                              "rgba(100, 127, 26,0.4)",
+                                              "rgba(0,255,0,0.4)",
+                                              "rgba(0,100,100,0.4)",
+                                              "rgba(239, 127, 26,0.4)",
+                                              "rgba(100,0,100,0.4)",
+                                              "rgba(200,100,200,0.4)",
+                                              "rgba(0, 200, 100,0.4)",
+                                              "rgba(255,255,100,0.4)"],
+                            data: [{% for Method in  Methodologies %} "{{ Method.total }}", {% endfor %}]
+                        }
+                    ]
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>
