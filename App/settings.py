@@ -25,11 +25,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'Main',
     'Analisys',
-    'Population',
     'UEProcess',
+    'Population',
+    'Methodologies',
     'UsabilityEvaluation',
-    'Methodologies'
 ]
 
 MIDDLEWARE = [

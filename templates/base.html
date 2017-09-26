@@ -1,0 +1,270 @@
+ {% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block Title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.css' %}">
+    <style>
+        html,
+        body,
+        .view{
+            height: 100%;
+        }
+
+        a{
+            text-align: center;
+        }
+
+
+        .top-nav-collapse {
+            background-color: #3c4f74;
+        }
+
+        footer.page-footer {
+            background-color: #3c4f74;
+            margin-top: 2rem;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .navbar {
+                background-color: #1C2331;
+            }
+            .objects-init
+            {
+                margin-top: 3rem;
+            }
+        }
+        @media only screen and (max-height: 480px) {
+            .objects-init
+            {
+                margin-top: 7rem;
+            }
+        }
+
+        .view {
+            background: url("{% static 'img/mockup.jpg' %}")no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-expand-md navbar-toggleable-md navbar-dark fixed-top scrolling-navbar white-text">
+        <div class="container" >
+            <button class="navbar-toggler navbar-toggler-right"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarNav1"
+                    aria-controls="navbarNav1"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <logo>
+                <a class="navbar-brand white-text"
+                   href="{% url 'init-page' %}">
+                    <img src="" alt="">
+                    <h5>
+                        <strong>
+                            Usabilidad<br>
+                            Aplicaciones Web
+                        </strong>
+                    </h5>
+                </a>
+            </logo>
+
+            <div class="collapse navbar-collapse" id="navbarNav1">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link">
+                            <i class="fa fa-heart fa-2x blue-text"></i><br>
+                            <h5>Analisis</h5>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="#analysis">
+                            <i class="fa fa-pie-chart fa-2x blue-text"></i><br>
+                            Análisis
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#best-features">
+                            <i class="fa fa-address-book fa-2x blue-text"></i><br>
+                            Objetivos
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">
+                            <i class="fa fa-envelope fa-2x blue-text"></i><br>
+                            Contactos
+                        </a>
+                    </li>
+                    <li class="dropdown nav-item">
+                        <a href="#"
+                           class="dropdown-toggle nav-link"
+                           data-toggle="dropdown"
+                           role="button"
+                           aria-expanded="false">
+                           <i class="fa fa-diamond fa-2x blue-text"></i><br>
+                           Metodologías
+                       </a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">SCRUM</a></li>
+                            <li><a href="#">XP</a></li>
+                            <li><a href="#">AUP</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">IWeb</a></li>
+                            <li><a href="#">Incremental</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">RUP</a></li>
+                            <li><a href="#">Cascada</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!--  -->
+    {% block Content %}
+
+    {% endblock %}
+    <!--  -->
+    <footer class="page-footer center-on-small-only">
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 offset-lg-1 hidden-lg-down">
+                    <h5 class="title">Web Apps Logo</h5>
+                    <p></p>
+                    <img src="{% static 'img/icon-project.svg' %}"
+                         alt=""
+                         class="fluid-image"
+                         height="150"
+                         width="150">
+                </div>
+
+                <hr class="hidden-md-up">
+
+                <div class="col-lg-2 col-md-4 offset-lg-1">
+                    <h5 class="title">Investigation</h5>
+                    <ul>
+                        <li><a href="#!">Analize Thesis</a></li>
+                        <li><a href="#!">Applied UE</a></li>
+                    </ul>
+                </div>
+
+                <hr class="hidden-md-up">
+
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="title">Next Steps</h5>
+                    <ul>
+                        <li><a href="#!">Identified Good Practices</a></li>
+                        <li><a href="#!">Get In UE on Software Engineering</a></li>
+                    </ul>
+                </div>
+
+                <hr class="hidden-md-up">
+
+                <div class="col-lg-2 col-md-4">
+                    <h5 class="title">Find Us</h5>
+                    <ul>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-facebook"></i>
+                                Facebook
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-twitter"></i>
+                                Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-youtube"></i>
+                                You Tube
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#!">
+                                <i class="fa fa-google-plus"></i>
+                                Google +
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="call-to-action">
+            <h4>Usability Web Apps</h4>
+            <ul>
+                <li>
+                    <h5>Leave Us Your Opinion</h5></li>
+                <li>
+                    <a target="_blank" href="" class="btn btn-info">
+                        Register
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="footer-copyright">
+            <div class="container-fluid">
+                <h6 class="mt-3">
+                    © 2017 Smart Emotions
+                    <span class="only-desktop">
+                        By
+                        <a href="http://facebook.com/">Carlos Guadir</a>
+                        <i class="fa fa-star ml-4"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </span>
+                </h6>
+            </div>
+        </div>
+    </footer>
+
+
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tether.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/chart.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
+    <script>
+        new WOW().init();
+    </script>
+    <script type="text/javascript">
+        $(window).scroll(function ()
+        {
+            if ($(".navbar").offset())
+            {
+                if ($(".navbar").offset().top > 50)
+                {
+                    $(".scrolling-navbar").addClass("top-nav-collapse");
+                }
+                else
+                {
+                    $(".scrolling-navbar").removeClass("top-nav-collapse");
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>
