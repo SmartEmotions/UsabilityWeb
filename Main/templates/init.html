@@ -8,7 +8,8 @@ Evaluacion de Usabilidad En Aplicaciones Web
 <div id="main-video-carousel"
      class="carousel slide carousel-fade"
      data-ride="carousel"
-     data-interval="false">
+     data-interval="10000"
+     data-pause="false">
     <ol class="carousel-indicators">
         <li data-target="#main-video-carousel"
             data-slide-to="0"
@@ -20,13 +21,17 @@ Evaluacion de Usabilidad En Aplicaciones Web
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <div class="view hm-indigo-slight">
-                <video class="video-fluid" autoplay loop>
+            <div class="view hm-black-strong">
+                <video class="video-fluid" autoplay loop id="main-video1">
 
-                    <source src="{% static 'video/Internet.mp4' %}"
+                    <source src="{% static 'video/Particles.mp4' %}"
                             type="video/mp4" />
                 </video>
                 <div class="full-bg-img"></div>
+                <script type="text/javascript">
+                    var vid = document.getElementById("main-video1");
+                        vid.playbackRate = 0.3;
+                </script>
             </div>
             <div class="carousel-caption">
                 <div class="flex-center animated fadeInDown">
@@ -45,10 +50,14 @@ Evaluacion de Usabilidad En Aplicaciones Web
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="view hm-purple-slight">
-                    <video class="video-fluid" autoplay loop>
-                        <source src="{% static 'video/WaterDragon.mp4' %}" type="video/mp4" />
+                <div class="view hm-black-strong">
+                    <video class="video-fluid" autoplay loop id="main-video2">
+                        <source src="{% static 'video/Internet.mp4' %}" type="video/mp4" />
                     </video>
+                    <script type="text/javascript">
+                        // var vid = document.getElementById("main-video2");
+                        //     vid.playbackRate = 0.3;
+                    </script>
                     <div class="mask"></div>
                 </div>
                 <div class="carousel-caption">
