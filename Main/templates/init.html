@@ -3,12 +3,11 @@
 {% block Title %}
 Evaluacion de Usabilidad En Aplicaciones Web
 {% endblock %}
-<!--  -->
 {% block Content %}
 <div id="main-video-carousel"
      class="carousel slide carousel-fade"
      data-ride="carousel"
-     data-interval="10000"
+     data-interval="20000"
      data-pause="false">
     <ol class="carousel-indicators">
         <li data-target="#main-video-carousel"
@@ -21,79 +20,83 @@ Evaluacion de Usabilidad En Aplicaciones Web
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="carousel-item active">
-            <div class="view hm-black-strong">
+            <div class="view hm-stylish-strong">
                 <video class="video-fluid" autoplay loop id="main-video1">
-
-                    <source src="{% static 'video/Particles.mp4' %}"
+                    <source src="{% static 'video/LinesPurple.mp4' %}"
                             type="video/mp4" />
                 </video>
                 <div class="full-bg-img"></div>
-                <script type="text/javascript">
-                    var vid = document.getElementById("main-video1");
-                        vid.playbackRate = 0.3;
-                </script>
+                {# <script type="text/javascript">
+                    // var vid = document.getElementById("main-video1");
+                    //     vid.playbackRate = 0.1;
+                </script>#}
             </div>
             <div class="carousel-caption">
                 <div class="flex-center animated fadeInDown">
                     <ul>
                         <li>
-                            <h1 class="h1-responsive">Material Design for Bootstrap 4</h1></li>
-                            <li>
-                                <p>The most powerful and free UI KIT for Bootstrap</p>
-                            </li>
-                            <li>
-                                <a target="_blank" href="https://mdbootstrap.com/getting-started/" class="btn btn-primary btn-lg">Sign up!</a>
-                                <a target="_blank" href="https://mdbootstrap.com/material-design-for-bootstrap/" class="btn btn-default btn-lg">Learn more</a>
-                            </li>
-                        </ul>
-                    </div>
+                            <h1 class="h1-responsive">Análisis De Resultados</h1>
+                        </li>
+                        <li>
+                            <h5>
+                                Análisis de la Usabilidad en Aplicaciones Web
+                            </h5>
+                        </li>
+                        <li>
+                            <a href="" class="btn teal btn-lg">Ir A Resultados</a>
+                            <a href="" class="btn btn-info btn-lg">Ver Resumen</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="view hm-black-strong">
-                    <video class="video-fluid" autoplay loop id="main-video2">
-                        <source src="{% static 'video/Internet.mp4' %}" type="video/mp4" />
-                    </video>
-                    <script type="text/javascript">
-                        // var vid = document.getElementById("main-video2");
-                        //     vid.playbackRate = 0.3;
-                    </script>
-                    <div class="mask"></div>
-                </div>
-                <div class="carousel-caption">
-                    <div class="flex-center animated fadeInDown">
-                        <ul>
-                            <li>
-                                <h1 class="h1-responsive">Lots of tutorials at your disposal</h1>
-                            </li>
-                            <li>
-                                <p>And all of them are FREE!</p>
-                            </li>
-                            <li>
-                                <a target="_blank" href="https://mdbootstrap.com/bootstrap-tutorial/" class="btn btn-primary btn-lg">Start learning</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev"
-               href="#main-video-carousel"
-               role="button"
-               data-slide="prev">
-                <span class="carousel-control-prev-icon"
-                      aria-hidden="true">
-                </span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next"
-               href="#main-video-carousel"
-               role="button"
-               data-slide="next">
-                <span class="carousel-control-next-icon"
-                      aria-hidden="true">
-                </span>
-                <span class="sr-only">Next</span>
-            </a>
         </div>
+        <div class="carousel-item">
+            <div class="view hm-stylish-strong">
+                <video class="video-fluid" autoplay loop id="main-video2">
+                    <source src="{% static 'video/Lines.mp4' %}" type="video/mp4" />
+                </video>
+                <div class="mask"></div>
+            </div>
+            <div class="carousel-caption">
+                <div class="flex-center animated fadeInDown">
+                    <ul>
+                        <li>
+                            <h1 class="h1-responsive">
+                                Población
+                            </h1>
+                        </li>
+                        <li>
+                            <h5>
+                                Aplicaciones Web Desarrolladas Como Trabajos de Grado
+                            </h5>
+                        </li>
+                        <li>
+                            <a href="" class="btn teal btn-lg">
+                                Trabajos de Grado
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev"
+           href="#main-video-carousel"
+           role="button"
+           data-slide="prev">
+            <span class="carousel-control-prev-icon"
+                  aria-hidden="true">
+            </span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next"
+           href="#main-video-carousel"
+           role="button"
+           data-slide="next">
+            <span class="carousel-control-next-icon"
+                  aria-hidden="true">
+            </span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+</div>
 {% endblock %}
-<!--  -->
