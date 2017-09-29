@@ -1694,11 +1694,11 @@ for (var func in conversions) {
   // export rgb2hsl and ["rgb"]["hsl"]
   convert[from] = convert[from] || {};
 
-  convert[from][to] = convert[func] = (function(func) { 
+  convert[from][to] = convert[func] = (function(func) {
     return function(arg) {
       if (typeof arg == "number")
         arg = Array.prototype.slice.call(arguments);
-      
+
       var val = conversions[func](arg);
       if (typeof val == "string" || val === undefined)
         return val; // keyword
@@ -1726,12 +1726,12 @@ Converter.prototype.routeSpace = function(space, args) {
    }
    // color.rgb(10, 10, 10)
    if (typeof values == "number") {
-      values = Array.prototype.slice.call(args);        
+      values = Array.prototype.slice.call(args);
    }
 
    return this.setValues(space, values);
 };
-  
+
 /* Set the values for a space, invalidating cache */
 Converter.prototype.setValues = function(space, values) {
    this.space = space;
@@ -13113,9 +13113,9 @@ WOW.prototype._appear = function (box, i) {
 };
 
 WOW.prototype._onStartAnimation = function (box, i) {
-  
+
   this._cleanupBoxVisibleListener[i] = this._boxVisible.bind(this, box, i);
-    
+
   box.addEventListener('animationstart', this._cleanupBoxVisibleListener[i]);
   box.addEventListener('webkitAnimationStart', this._cleanupBoxVisibleListener[i]);
 
@@ -13137,7 +13137,7 @@ WOW.prototype._getAnimationConfig = function (box) {
     delay: this._getDelay(box),
     duration: this._getDuration(box),
     iterations: this._getIterations(box)
-      
+
   }
 
 };
@@ -13156,9 +13156,9 @@ WOW.prototype._getDuration = function (box) {
 
 WOW.prototype._getIterations = function (box) {
 
-  return box.getAttribute('data-wow-iteration') || 
-    box.style.animationIterationCount || 
-    window.getComputedStyle(box, null).animationIterationCount || 
+  return box.getAttribute('data-wow-iteration') ||
+    box.style.animationIterationCount ||
+    window.getComputedStyle(box, null).animationIterationCount ||
     1;
 
 };
@@ -13209,7 +13209,7 @@ WOW.prototype._cleanupClass = function (box) {
 
     classArray.splice(animateIndex, 1);
     box.className = classArray.join(' ');
-    
+
   }
 
 };
@@ -13225,7 +13225,7 @@ WOW.prototype._eachBox = function (each) {
       (function (i) {
          each(this._boxes[i], i);
       }.bind(this))(i);
-      
+
     }
 
   }
@@ -13243,7 +13243,7 @@ WOW.prototype._scrollHandler = function () {
 };
 
 WOW.prototype._hideSeoFix = function () {
-  
+
   window.removeEventListener('scroll', this._hideSeoFixListener);
   delete this._hideSeoFixListener;
 
@@ -13334,7 +13334,7 @@ WOW.prototype._checkForChanges = function () {
 };
 
 WOW.prototype._mutations = function (mutations) {
-  
+
   mutations.forEach(function (mutation) {
 
     for (var i = 0; i < mutation.addedNodes.length; i++) {
@@ -14013,7 +14013,7 @@ Waves.init();
             var $this = $(input);
             var $labelAndIcon = $this.siblings("label, i");
             update_text_fields($this);
-            var isValid = input.validity.badInput; // pure js 
+            var isValid = input.validity.badInput; // pure js
             if (isValid) $labelAndIcon.addClass("active");
         });
 
@@ -14022,7 +14022,7 @@ Waves.init();
             $(e.target).siblings('label, i').addClass('active');
         });
 
-        // Remove active on blur when not needed or invalid 
+        // Remove active on blur when not needed or invalid
         $(document).on('blur', input_selector, function (e) {
             var $this = $(e.target);
             var noValue = !$this.val();

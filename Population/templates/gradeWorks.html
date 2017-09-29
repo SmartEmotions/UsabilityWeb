@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block Title %}
+    Trabajos de Grado
+{% endblock %}
+{% block Content %}
+<style media="screen">
+    .scrolling-navbar
+    {
+        background-color: #263238;
+    }
+</style>
+<div class="container" style="padding-top:7rem;">
+    <div class="divider-new">
+        <h2 class="h2-responsive wow fadeIn" data-wow-delay="0.2s">
+            Trabajos de Grado
+        </h2>
+    </div>
+
+    <section class="text-justify wow fadeIn" data-wow-delay="0.2s">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="text-center">
+                    <h4 class="card-title">
+                        Trabajos De Grado Ingeniería De Sistemas - Universidad De Nariño
+                    </h4>
+                    <h5 class="card-text">
+                        El siguiente grafico muestra los trabajos de grado desarrollados por los estudiantes de Ingeniería de Sistemas de la Universidad de Nariño en valores porcentuales, para ello se identificó unas características; como el desarrollo de aplicaciones móviles, aplicaciones web, aplicaciones web y móviles, tesis de auditorías y el porcentaje de otras tesis.
+                    </h5>
+                </div>
+                <div class="row">
+                    <div class="col-lg-11 m-auto pt-3">
+                        <canvas id="works-types"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    {% block Usability %}{% endblock %}
+</div>
+
+{% endblock %}
+{% block JavaScript %}
+<script type="text/javascript">
+Chart.defaults.global.defaultFontSize = '16';
+(function() {
+    var ctx = document.getElementById('works-types').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'bar',
+        options:
+        {
+            showDatapercentages: true,
+            animation:{
+                animateScale:true
+            },
+            scales:
+            {
+                xAxes:
+                [{
+                    ticks: {
+                        beginAtZero: true,
+                        fontSize: 18
+                    },
+                    gridLines: {
+                        display:false
+                    },
+                    display:true
+                }],
+                yAxes:
+                [{
+                    ticks: {
+                        beginAtZero: true,
+                        fontSize: 18,
+                        min:0,
+                        max:60
+                    },
+                    gridLines: {
+                        display:false
+                    },
+                    display:true,
+                }]
+            },
+            legend: {
+                display: false
+            },
+        },
+        data:
+        {
+            labels: [{% for Type in  Works %} "{{ Type.type }}", {% endfor %}],
+            datasets:
+            [
+                {
+                    label:'Cantidad: ',
+                    backgroundColor: ["rgba(0,255,100,0.4)",
+                                      "rgba(239, 127, 26,0.4)",
+                                      "rgba(0,255,0,0.4)",
+                                      "rgba(0, 128, 128,0.4)",
+                                      "rgba(139, 127, 26,0.4)",
+                                      "rgba(0,200,0,0.4)",
+                                      "rgba(50, 128, 128,0.4)"],
+                    data: [{% for Total in  Works %} "{{ Total.total }}", {% endfor %}]
+                }
+            ]
+        }
+    });
+})();
+
+Chart.plugins.register({
+    afterDraw: function(chartInstance)
+    {
+        if (chartInstance.config.options.showDatapercentages)
+        {
+            var helpers = Chart.helpers;
+            var ctx = chartInstance.chart.ctx;
+            var fontColor = helpers.getValueOrDefault(chartInstance.config.options.showDatapercentages.fontColor, chartInstance.config.options.defaultFontColor);
+            ctx.font = Chart.helpers.fontString(Chart.defaults.global.defaultFontSize, 'normal', Chart.defaults.global.defaultFontFamily);
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'bottom';
+            ctx.fillStyle = fontColor;
+
+            chartInstance.data.datasets.forEach(function (dataset)
+            {
+                var total = 0;
+                for (var i = 0; i < dataset.data.length; i++)
+                {
+                    total += parseInt(dataset.data[i]);
+                }
+                for (var i = 0; i < dataset.data.length; i++)
+                {
+                    var model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
+                    var scaleMax = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._yScale.maxHeight;
+                    var yPos = (scaleMax - model.y) / scaleMax >= 0.93 ? model.y + 20 : model.y - 5;
+                    ctx.fillText(parseFloat((dataset.data[i]/total)*100).toFixed(2) + ' %', model.x, yPos);
+                }
+            });
+        }
+    }
+});
+</script>
+{% block UsabilityScripts %}{% endblock %}
+{% endblock %}

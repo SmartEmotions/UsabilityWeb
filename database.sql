@@ -6,6 +6,21 @@
 -- Creacion de Base de Datos Para Investigacion
 -- Se encuentra soportada con el diagrama entidad relacion
 --
+-- copy GradeWorks(work_id,
+--                 work_name,
+--                 work_iswapp,
+--                 work_ismapp,
+--                 work_isdesk,
+--                 work_isaudi,
+--                 work_isweng,
+--                 work_isdbmn,
+--                 work_isothe,
+--                 work_year,
+--                 work_uevalu,
+--                 work_status)
+-- from 'C:\DJango\Investigation\gradeWorks.csv' delimiters ';';
+
+
 create table GradeWorks
 (
     work_id serial not null primary key,
@@ -22,11 +37,13 @@ create table GradeWorks
     work_status varchar(2)
 );
 
+
 create table Methodologies
 (
     method_id varchar(4) not null primary key,
     method_name varchar(100)
 );
+
 
 create table WebAplications
 (
@@ -48,8 +65,6 @@ create table WebAplications
 );
 
 
-
-
 create table DevelopmentPractice
 (
     prac_id serial not null primary key,
@@ -59,6 +74,7 @@ create table DevelopmentPractice
     prac_type varchar(100)
 );
 
+
 create table PracticeEvaluation
 (
     pe_id serial not null primary key,
@@ -67,6 +83,7 @@ create table PracticeEvaluation
     pe_status boolean,
     pe_dateti timestamp
 );
+
 
 create table HeuristicEvaluation
 (
