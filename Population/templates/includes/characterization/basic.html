@@ -1,0 +1,91 @@
+<div class="row">
+    <div class="col-lg-12 m-auto">
+        <div class="md-form">
+            <input type="text"
+                   id="workc_name"
+                   name="workc_name"
+                   class="form-control" disabled>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6">
+        <div class="md-form">
+            <select class="selectpicker show-tick dropup"
+                    data-header="Tipo Trabajo De Grado"
+                    data-style="btn-info"
+                    data-width="100%"
+                    name="workc_type"
+                    id="workc_type"
+                    title="Tipo Trabajo De Grado"
+                    data-error=".errorType" disabled>
+                <option value='Aplicación Web'>Aplicación Web</option>
+                <option value='Aplicación Móvil'>Aplicación Móvil</option>
+                <option value='Aplicación Web y Móvil'>Aplicación Web y Móvil</option>
+                <option value='Aplicación De Escritorio'>Aplicación De Escritorio</option>
+                <option value='Ingeniería De Software'>Ingeniería De Software</option>
+                <option value='Bases y Mineria De Datos'>Bases y Mineria De Datos</option>
+                <option value='Auditoria'>Auditoria</option>
+                <option value='Otra'>Otra</option>
+            </select>
+        </div>
+        <div class="errorType text-center"></div>
+    </div>
+    <div class="col-lg-6" align="left">
+        <label for="workc_uevalu" class="mr-3"><b>Evaluación de Usabilidad: </b></label>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="workc_uevalu" value="True" disabled> Si
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="workc_uevalu" value="False" disabled> No
+            </label>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4" align="left">
+        <label for="workc_develo" class="mr-3"><b>Desarrollo de Software: </b></label>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="workc_develo" value="True" disabled> Si
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="workc_develo" value="False" disabled> No
+            </label>
+        </div>
+        <!-- <div class="errorCDevelop text-center"></div> -->
+    </div>
+    <div class="col-lg-2">
+        <div class="md-form">
+            <input type="text"
+                   id="workc_year"
+                   name="workc_year"
+                   class="form-control"
+                   data-error=".errorYear" disabled>
+        </div>
+        <div class="errorYear text-center"></div>
+    </div>
+    <div class="col-lg-6" align="left">
+        <label for="workc_status" class="mr-3">
+            <b>Estado Proyecto: </b>
+        </label>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input"
+                       type="radio"
+                       name="workc_status"
+                       value="T" disabled> Terminado
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="workc_status" value="P" disabled> En Proceso
+            </label>
+        </div>
+    </div>
+</div>

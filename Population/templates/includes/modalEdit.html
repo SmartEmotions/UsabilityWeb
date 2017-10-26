@@ -1,0 +1,153 @@
+<div class="modal fade"
+     id="modalEdit" tabindex="-1"
+     role="dialog" aria-labelledby="modalEdit"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-notify modal-success"
+         role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <h3 class="heading lead">
+                    Editar Información Trabajo de Grado
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+
+            <!--Body-->
+            <form id="form_edit">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="text-left pb-4">
+                        <h4>
+                            Edite Información Trabajo de Grado
+                        </h4>
+                    </div>
+                    <input type="hidden" name="worke_id" id="worke_id">
+                    <div class="row">
+                        <div class="col-lg-12 m-auto">
+                            <div class="md-form">
+                                <label for="worke_name" class="active">
+                                    Nombre Trabajo
+                                </label>
+                                <input type="text"
+                                       id="worke_name"
+                                       name="worke_name"
+                                       class="form-control"
+                                       data-error=".errorEditName">
+                            </div>
+                            <div class="errorEditName text-center"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="md-form">
+                                <select class="selectpicker show-tick dropup"
+                                        data-header="Tipo Trabajo De Grado"
+                                        data-style="btn-info"
+                                        data-width="100%"
+                                        id="worke_type"
+                                        title="Tipo Trabajo De Grado"
+                                        data-error=".errorEditType" multiple>
+                                    <option value='Aplicación Web'>Aplicación Web</option>
+                                    <option value='Aplicación Móvil'>Aplicación Móvil</option>
+                                    <option value='Aplicación Web y Móvil'>Aplicación Web y Móvil</option>
+                                    <option value='Aplicación De Escritorio'>Aplicación De Escritorio</option>
+                                    <option value='Ingeniería De Software'>Ingeniería De Software</option>
+                                    <option value='Bases y Mineria De Datos'>Bases y Mineria De Datos</option>
+                                    <option data-subtext="Grid & Parallel" value='Sistemas Distribuidos'>Sistemas Distribuidos</option>
+                                    <option value='Portal Web'>Portal Web</option>
+                                    <option data-subtext="XBox">Video Juego</option>
+                                    <option value='Auditoria'>Auditoria</option>
+                                    <option value='Redes y Telematica'>Redes y Telematica</option>
+                                    <option value='Inteligencia Artificial'>Inteligencia Artificial</option>
+                                    <option value='OVAS'>OVAS</option>
+                                    <option value='Otro'>Otro</option>
+                                </select>
+                            </div>
+                            <div class="errorEditType text-center"></div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="md-form">
+                                <label class="active" for="worke_year">
+                                    Año
+                                </label>
+                                <input type="text"
+                                       id="worke_year"
+                                       name="worke_year"
+                                       class="form-control"
+                                       data-error=".errorEditYear">
+                            </div>
+                            <div class="errorEditYear text-center"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" align="left">
+                            <label for="worke_uevalu" class="mr-3"><b>Evaluación Usabilidad: </b></label>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="worke_uevalu" value="True" aria-describedby=".errorUEvaluation"> Si
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="worke_uevalu" value="False" aria-describedby=".errorUEvaluation"> No
+                                </label>
+                            </div>
+                            <div class="text-center errorUEvaluation"></div>
+                        </div>
+                        <div class="col-lg-6" align="left">
+                            <label for="worke_status" class="mr-3"><b>Estado: </b></label>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input"
+                                           type="radio"
+                                           name="worke_status"
+                                           value="T"> Terminado
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="worke_status" value="P"> En Proceso
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" align="left">
+                            <label for="worke_develo" class="mr-4"><b>Desarrollo Software: </b></label>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label ml-2">
+                                    <input class="form-check-input"
+                                           type="radio"
+                                           name="worke_develo"
+                                           value="True"> Si
+                                </label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="worke_develo" value="False"> No
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a type="button"
+                       class="btn btn-primary-modal"
+                       data-dismiss="modal">
+                       Cancelar
+                       <i class="fa fa-ban ml-1"></i>
+                   </a>
+                   <button type="submit"
+                           class="btn btn-outline-secondary-modal waves-effect">
+                        Guardar
+                   </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

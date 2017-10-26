@@ -1,0 +1,114 @@
+<section class="text-justify wow fadeIn" data-wow-delay="0.2s">
+    <div class="row">
+        <div class="col-lg-12">
+            <h4 class="card-title text-center">
+                Buscar Trabajos De Grado
+            </h4>
+            <form id="search-work">
+                {% csrf_token %}
+                <label for="work-name">
+                    Digite Nombre Trabajo
+                </label>
+                <div class="md-form mt-4"
+                     style="margin-bottom:0 !important">
+                    <input type="text"
+                           id="work_name"
+                           name="work_name"
+                           class="typeahead form-control"
+                           data-error=".errorSearchName">
+                </div>
+                <div class="errorSearchName text-left pb-2"></div>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-5 offset-lg-1">
+            <button type="submit"
+                    class="btn btn-info btn-lg"
+                    id="btn-searchwork">
+                Buscar
+                <i class="fa fa-search right ml-3"></i>
+            </button>
+        </div>
+        <div class="col-lg-5" align="right">
+            <button type="button"
+                    class="btn btn-success btn-lg"
+                    data-toggle="modal" data-target="#modalAdd">
+                Agregar Trabajo De grado
+                <i class="fa fa-plus right ml-3"></i>
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-10 m-auto pt-4 pb-4" id="search_results">
+            <h5 class="card-text mt-4 mb-4 text-center">
+                <p>Buscar un Trabajo de Grado por el nombre para editar su información, caracterizar o revisar las características  disponibles. Tenemos registrados<b id="works-cant">162</b> trabajos de grado.</p>
+                <p>Registre su trabajo de grado y aporte a esta investigación. Si su trabajo es una Aplicación Web puede evaluar la usabilidad de los prototipos de manera progresiva hasta obtener un nivel de usabilidad deseado.</p>
+            </h5>
+        </div>
+
+    </div>
+</section>
+<style type="text/css">
+    .tt-query, .tt-hint
+    {
+        border: 2px solid #00C851;
+        border-radius: 8px;
+        font-size: 18px;
+        height: 40px;
+        line-height: 40px;
+        outline: medium none;
+        padding: 8px 12px;
+        width: 100% !important
+    }
+    .tt-query
+    {
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    }
+    .tt-hint
+    {
+        color: #999999;
+    }
+    .tt-menu
+    {
+        background-color: #FFFFFF;
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-radius: 8px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        margin-top: 0;
+        padding: 8px 0;
+        width: 100% !important;
+    }
+    .tt-suggestion.tt-selectable.tt-cursor
+    {
+        cursor: pointer;
+        background-color: #00C851;
+        color: #FFFFFF;
+    }
+    .tt-suggestion
+    {
+        font-size: 18px;
+        padding: 3px 20px;
+        width: 100% !important;
+    }
+    .tt-suggestion:hover
+    {
+        cursor: pointer;
+        background-color: #00C851;
+        color: #FFFFFF;
+    }
+    .tt-suggestion p
+    {
+        margin: 0;
+        width: 100% !important;
+    }
+    .twitter-typeahead
+    {
+        width: 100% !important;
+    }
+    input.typeahead, input.tt-hint
+    {
+        overflow: hidden;
+        text-overflow: ellipsis !important;
+    }
+</style>

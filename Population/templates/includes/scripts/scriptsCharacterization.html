@@ -1,0 +1,255 @@
+<script type="text/javascript">
+// ************************************************
+// Init DatePicker Input Date information *********
+$('.datepicker').datepicker({
+    startDate: '-3y'
+});
+// ************************************************
+// Set Empty textarea *****************************
+$('#workc_dscupd').val('');
+// ************************************************
+// Load Info Tab Characterization *****************
+function charatetization(id,name,year,status,type,usability,dev)
+{
+    de = (dev ? "True":"False");
+    ue = (usability ? "True":"False");
+    st = (status = 'Terminado'? "T":"P");
+    $(window).scrollTop(0);
+    $('#workc_id').val(id);
+    $('#workc_name').val(name);
+    $('#workc_year').val(year);
+    $('#workc_type').selectpicker('val', type);
+    $('#tabs-popu a[href="#characterization"]').tab('show');
+    $('input[name=workc_uevalu][value='+ue+']').attr('checked', true);
+    $('input[name=workc_status][value='+st+']').attr('checked', true);
+    $('input[name=workc_develo][value='+de+']').attr('checked', true);
+    getCharacterization(id);
+}
+
+
+function getCharacterization(id)
+{
+    $.ajax({
+        url: "{% url 'work-getcha' %}",
+        type: 'POST',
+        data: {csrfmiddlewaretoken:'{{csrf_token}}', work_id: id}
+    }).done(function(datos)
+    {
+        if (!datos.Empty)
+        {
+            loadCharacterization(datos);
+        }
+        else
+        {
+            cleanFormCharacterization();
+        }
+    });
+}
+
+
+function loadCharacterization(datos)
+{
+    pr = (datos.Production==true ? "True":"False");
+    $('#workc_devels').val(datos.Members);
+    $('#workc_devels').trigger( "focusin" );
+    $('#workc_update').val(datos.Update);
+    $('#workc_update').trigger( "focusin" );
+    $('#workc_dscupd').val(datos.Description);
+    $('#workc_dscupd').trigger( "focusin" );
+    $('#workc_timede').val(datos.TimeCost.split(' ')[0]);
+    $('#workc_timede').trigger( "focusin" );
+    $('#workc_timele').val(datos.TProduction.split(' ')[0]);
+    $('#workc_timele').trigger( "focusin" );
+    $('#workc_entity').selectpicker('val', datos.Entity);
+    $('#workc_method').selectpicker('val', datos.Method);
+    $('#workc_sector').selectpicker('val', datos.Sector);
+
+    $('#workc_ffront').selectpicker('val', datos.FFrontEnd.split(','));
+    $('#workc_lafron').selectpicker('val', datos.LFrontEnd.split(','));
+
+    $('input[name=workc_produc][value='+pr+']').attr('checked', true);
+    $(`input[name=workc_framew][value='${datos.FBackEnd}']`).attr('checked', true);
+    $(`input[name=workc_laback][value='${datos.LBackEnd}']`).attr('checked', true);
+    $(`input[name=workc_appser][value='${datos.AppServer}']`).attr('checked', true);
+    $(`input[name=workc_sysgdb][value='${datos.SGDB}']`).attr('checked', true);
+}
+
+
+$('#charac_form').validate({
+    rules: {
+        workc_method: {
+            required: true
+        },
+        workc_devels:
+        {
+            required: true,
+            min: 1,
+            max: 10
+        },
+        workc_entity:
+        {
+            required: true
+        },
+        workc_sector:
+        {
+            required: true
+        },
+        workc_laback:
+        {
+            required: true
+        },
+        workc_lafron:
+        {
+            required: true
+        },
+        workc_sysgdb:
+        {
+            required: true
+        },
+        workc_produc:
+        {
+            required: true
+        },
+        workc_timele:
+        {
+            // Liberar en Investigación de campo
+            // required: true,
+            min: 0,
+            max:100
+        },
+        workc_framew:
+        {
+            required: true
+        },
+        workc_dscupd:
+        {
+            required: true,
+        },
+        // Liberar para investigación en campo
+        // workc_update:
+        // {
+        //     required: true,
+        // },
+        workc_appser:
+        {
+            required: true,
+        },
+        workc_timede:
+        {
+            // Liberar para investigación en campo
+            // required: true,
+            min: 1,
+            max: 100
+        },
+    },
+    messages: {
+        workc_method: {
+            required: 'Seleccione Metodo de Desarrollo'
+        },
+        workc_devels:
+        {
+            required: 'Digite Numero Desarrolladores',
+            min: "Por Favor, Digite Numero Mayor a 1",
+            max: "Por Favor, Digite Numero Menor a 10"
+        },
+        workc_entity:
+        {
+            required: "Seleccione Tipo Entidad Beneficiada"
+        },
+        workc_sector:
+        {
+            required: "Seleccione Sector Beneficiado"
+        },
+        workc_laback:
+        {
+            required: "Señale Lenguaje Back-End"
+        },
+        workc_lafron:
+        {
+            required: "Seleccione Lenguaje Front-End"
+        },
+        workc_sysgdb:
+        {
+            required: "Señale Gestor de Bases de Datos"
+        },
+        workc_produc:
+        {
+            required: 'Marque Una Opción'
+        },
+        workc_timele:
+        {
+            required: 'Indique Duración en Producción',
+            min: "Por favor, Digite Numero Mayor a 1",
+            max: "Por favor, Digite Numero Menor a 100"
+        },
+        workc_framew:
+        {
+            required: "Señale Framework de Desarrollo Web"
+        },
+        workc_dscupd:
+        {
+            required: "Digite una descripción, servira como seguimiento en la caracterización",
+        },
+        // Liberar para investigación en campo
+        // workc_update:
+        // {
+        //     required: true,
+        // },
+        workc_appser:
+        {
+            required: "Señale Servidor de Aplicáciones",
+        },
+        workc_timede:
+        {
+            // Liberar para investigación en campo
+            // required: true,
+            min: "Por favor, Digite Numero Mayor a 1",
+            max: "Por favor, Digite Numero Menor a 100"
+        },
+    },
+    errorElement : 'div',
+    errorPlacement: function(error, element)
+    {
+        var placement = $(element).data('error');
+        if (placement)
+        {
+            $(placement).append(error)
+        }
+        else
+        {
+            error.insertAfter(element);
+        }
+    },
+    submitHandler: function(form)
+    {
+        $.ajax({
+            url: "{% url 'work-char' %}",
+            type: 'POST',
+            data: ($("#charac_form").serialize()+'&'+$.param({ 'workc_lafron': ($('#workc_lafron').selectpicker('val')).toString(), 'workc_ffront': ($('#workc_ffront').selectpicker('val')).toString()}))
+        }).done(function(datos)
+        {
+            cleanFormCharacterization();
+        });
+    }
+});
+
+
+function cleanFormCharacterization()
+{
+    $('#charac_form').trigger("reset");
+    $('#workc_entity').selectpicker('deselectAll');
+    $('#workc_method').selectpicker('deselectAll');
+    $('#workc_sector').selectpicker('deselectAll');
+
+    $('#workc_ffront').selectpicker('deselectAll');
+    $('#workc_lafron').selectpicker('deselectAll');
+
+
+    $('input[name="workc_produc"]').attr('checked', false);
+    $('input[name="workc_appser"]').attr('checked', false);
+    $('input[name="workc_laback"]').attr('checked', false);
+    //$('input[name="workc_lafron"]').attr('checked', false);
+    $('input[name="workc_sysgdb"]').attr('checked', false);
+    $('input[name="workc_framew"]').attr('checked', false);
+}
+</script>

@@ -1,4 +1,5 @@
 from django.conf.urls import url, include
-from Main.views import initView
+from Main.views import initView, testHTML
 
-urlpatterns = [url(r'^init/', initView, name='initView'),]
+urlpatterns = [ url(r'^$', initView, name='init-view'),
+                url(r'^test/', testHTML, name='testView'),]

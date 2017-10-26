@@ -1,0 +1,240 @@
+
+<script type="text/javascript">
+var data_sgdb = false;
+var data_lback = false;
+var data_bfram = false;
+var data_appse = false;
+var data_lfron = false;
+var data_ffram = false;
+var data_secto = false;
+var data_entit = false;
+$(window).scroll(function()
+{
+    var hT = $('#graph_sgdb').offset().top;
+    var hH = $('#graph_sgdb').outerHeight();
+
+    var lT = $('#graph_lback').offset().top;
+    var lH = $('#graph_lback').outerHeight();
+
+    var sT = $('#graph_appse').offset().top;
+    var sH = $('#graph_appse').outerHeight();
+
+    var fbT = $('#graph_fback').offset().top;
+    var fbH = $('#graph_fback').outerHeight();
+
+    var lfT = $('#graph_lfron').offset().top;
+    var lfH = $('#graph_lfron').outerHeight();
+
+    var ffT = $('#graph_ffram').offset().top;
+    var ffH = $('#graph_ffram').outerHeight();
+
+    var scT = $('#graph_secto').offset().top;
+    var scH = $('#graph_secto').outerHeight();
+
+    var enT = $('#graph_entit').offset().top;
+    var enH = $('#graph_entit').outerHeight();
+
+    var wH = $(window).height();
+    var wS = $(this).scrollTop();
+
+    if (data_sgdb == false)
+    {
+        data_sgdb = analizeScroll(wS, wH, hT, hH, 'app_nsgdb');
+    }
+    //data_sgdb = analizeScroll(wS, wH, hT, hH, data_sgdb, 'app_nsgdb') == true ? true:false;
+    // if (wS > (hT+hH-wH) && (hT > wS) && (wS+wH > hT+hH))
+    // {
+    //     if (typeof data_sgdb == 'undefined')
+    //     {
+    //         data_sgdb = true;
+    //         getdata('app_nsgdb');
+    //     }
+    // }
+    if (wS > (lT+lH-wH) && (lT > wS) && (wS+wH > lT+lH))
+    {
+        if (typeof data_lback == 'undefined')
+        {
+            data_lback = true;
+            getdata('app_lback');
+        }
+    }
+    else if (wS > (sT+sH-wH) && (sT > wS) && (wS+wH > sT+sH))
+    {
+        if (typeof data_appse == 'undefined')
+        {
+            data_appse = true;
+            getdata('app_appse');
+        }
+    }
+
+    else if (wS > (fbT+fbH-wH) && (fbT > wS) && (wS+wH > fbT+fbH))
+    {
+        if (typeof data_bfram == 'undefined')
+        {
+            data_bfram = true;
+            getdata('app_bfram');
+        }
+    }
+
+    else if (wS > (lfT+lfH-wH) && (lfT > wS) && (wS+wH > lfT+lfH))
+    {
+        if (typeof data_lfron == 'undefined')
+        {
+            data_lfron = true;
+            getdata('app_lfron');
+        }
+    }
+
+    else if (wS > (ffT+ffH-wH) && (ffT > wS) && (wS+wH > ffT+ffH))
+    {
+        if (typeof data_ffram == 'undefined')
+        {
+            data_ffram = true;
+            getdata('app_ffram');
+        }
+    }
+    else if (wS > (scT+scH-wH) && (scT > wS) && (wS+wH > scT+scH))
+    {
+        if (typeof data_secto == 'undefined')
+        {
+            data_secto = true;
+            getdata('app_secto');
+        }
+    }
+
+    else if (wS > (enT+enH-wH) && (enT > wS) && (wS+wH > enT+enH))
+    {
+        if (typeof data_entit == 'undefined')
+        {
+            data_entit = true;
+            getdata('app_entit');
+        }
+    }
+});
+
+function getdata(characteristic)
+{
+    var canvas = '';
+    var url = '';
+    if (characteristic == 'app_nsgdb')
+    {
+        canvas = 'worksc-sgdb';
+        url = "{% url 'web-apps-sgdb' %}";
+    }
+    else if (characteristic == 'app_lback')
+    {
+        canvas = 'worksc-lback';
+        url = "{% url 'web-apps-lback' %}";
+    }
+    else if (characteristic == 'app_appse')
+    {
+        canvas = 'worksc-appse';
+        url = "{% url 'web-apps-appse' %}";
+    }
+    else if (characteristic == 'app_bfram')
+    {
+        canvas = 'worksc-fback';
+        url = "{% url 'web-apps-bfram' %}";
+    }
+
+    else if (characteristic == 'app_lfron')
+    {
+        canvas = 'worksc-lfron';
+        url = "{% url 'web-apps-lfron' %}";
+    }
+
+    else if (characteristic == 'app_ffram')
+    {
+        canvas = 'worksc-ffram';
+        url = "{% url 'web-apps-ffram' %}";
+    }
+
+    else if (characteristic == 'app_secto')
+    {
+        canvas = 'worksc-secto';
+        url = "{% url 'web-apps-secto' %}";
+    }
+    else if (characteristic == 'app_entit')
+    {
+        canvas = 'worksc-entit';
+        url = "{% url 'web-apps-entit' %}";
+    }
+    $.ajax({
+        url: url,
+        type: 'GET',
+        data: {format:"json"}
+    }).done(function(datos)
+    {
+        drawDataCharacteristic(datos, characteristic, canvas);
+    });
+}
+
+function drawDataCharacteristic(info, characteristic, canvas)
+{
+    var canv = canvas;
+    var labs = [];
+    var data = [];
+    info.forEach(elem => {
+        if (characteristic == 'app_nsgdb')
+        {
+            labs.push(elem.app_nsgdb);
+        }
+        else if (characteristic == 'app_lback')
+        {
+            labs.push(elem.app_lback);
+        }
+        else if (characteristic == 'app_appse')
+        {
+            labs.push(elem.app_appse);
+        }
+        else if (characteristic == 'app_bfram')
+        {
+            labs.push(elem.app_bfram);
+        }
+        else if (characteristic == 'app_lfron')
+        {
+            labs.push(elem.app_lfron);
+        }
+        else if (characteristic == 'app_ffram')
+        {
+            labs.push(elem.app_ffram);
+        }
+        else if (characteristic == 'app_secto')
+        {
+            labs.push(elem.app_secto);
+        }
+
+        else if (characteristic == 'app_entit')
+        {
+            labs.push(elem.app_entit);
+        }
+        data.push(elem.Total);
+    });
+
+    var dalb = "Cantidad";
+    var bgcl = ["rgba(0,255,100,0.4)",
+                "rgba(239, 127, 26,0.4)",
+                "rgba(0,255,0,0.4)",
+                "rgba(0, 128, 128,0.4)",
+                "rgba(139, 127, 26,0.4)",
+                "rgba(0,200,0,0.4)",
+                "rgba(50, 128, 128,0.4)"];
+    var perc = true;
+    var width = 0.8;
+    drawBar(canv, labs, data, dalb, bgcl, perc, width, 20);
+}
+
+
+function analizeScroll(wS, wH, hT, hH, v)
+{
+    if (wS > (hT+hH-wH) && (hT > wS) && (wS+wH > hT+hH))
+    {
+        getdata(v);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+</script>

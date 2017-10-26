@@ -1,0 +1,145 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>{% block Title %}{% endblock %}</title>
+   <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+   <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
+   <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+   <link rel="stylesheet" href="{% static 'css/style.css' %}">
+   <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.css' %}">
+   <style media="screen">
+        .nav-tabs
+        {
+            position: relative;
+            border-bottom: 0;
+            width: 80%;
+            margin: 40px auto;
+            margin-bottom: 0;
+        }
+        /*.nav-tabs > a.active > a,
+        .nav-tabs > a.active > a:hover,
+        .nav-tabs > a.active > a:focus
+        {
+            color: #aaafff !important;
+            border: 0 !important;
+            border-bottom-color: transparent !important;
+        }*/
+        .liner
+        {
+            height: 3px;
+            background: #ddd;
+            position: absolute;
+            width: 70%;
+            margin: 0 auto;
+            left: 0;
+            right: 0;
+            top: 50%;
+            z-index: 1;
+        }
+        span.round-tabs
+        {
+            color: rgb(34, 194, 34);
+            border: 2px solid rgb(34, 194, 34);
+        }
+        .nav-tabs > li.active > a span.round-tabs
+        {
+            background: #fafafa !important;
+        }
+        span.round-tabs
+        {
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            display: inline-block;
+            border-radius: 100px;
+            background: white;
+            z-index: 2;
+            /*position: absolute;*/
+            left: 0;
+            text-align: center !important;
+            font-size: 2.5rem;
+        }
+        .nav-tabs > li
+        {
+            width: 33%;
+        }
+        li:after {
+            content: " ";
+            position: absolute;
+            left: 45%;
+            opacity:0;
+            margin: 0 auto;
+            bottom: 0px;
+            border: 5px solid transparent;
+            border-bottom-color: #ddd;
+            transition:0.1s ease-in-out;
+
+        }
+        li.active:after
+        {
+            content: none;
+            position: absolute;
+            left: 45%;
+            opacity:1;
+            margin: 0 auto;
+            bottom: 0px;
+            border: 10px solid transparent;
+            border-bottom-color: #ddd;
+        }
+        .nav-tabs > li a
+        {
+            width: 70px;
+            height: 70px;
+            margin: 20px auto;
+            border: transparent;
+            border-radius: 100%;
+            padding: 0;
+        }
+
+        .nav-tabs > li a:hover
+        {
+            content: none;
+            background: transparent;
+        }
+   </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <div class="liner"></div>
+                    <li class="nav-item">
+                        <a class="nav-link" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-expanded="true">
+                            <span class="round-tabs one">
+                                <i class="fa fa-home"></i>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile">
+                            <span class="round-tabs two green-text">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">Mostrando Inicio</div>
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">Mostrando Tipos</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/tether.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/mdb.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
+</body>
+</html>

@@ -6,4 +6,5 @@ urlpatterns = [
     url(r'^', include("Main.urls")),
     url(r'^', include("Analisys.urls")),
     url(r'^', include("Population.urls")),
+    url(r'^', include("Methodologies.urls")),
 ]

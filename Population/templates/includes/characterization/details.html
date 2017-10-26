@@ -1,0 +1,230 @@
+<style media="screen">
+    .labeltxt.active
+    {
+        transform:translateY(-10%) !important;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="md-form">
+            <label for="workc_devels">
+                Numero Desarrolladores Involucrados
+            </label>
+            <input type="number"
+                   id="workc_devels"
+                   name="workc_devels"
+                   class="form-control"
+                   data-error=".errorDevs">
+        </div>
+        <div class="errorDevs text-center"></div>
+    </div>
+    <div class="col-lg-4">
+        <div class="md-form">
+            <select class="selectpicker show-tick dropup"
+                    data-header="Tipo Entidad"
+                    data-style="btn-info"
+                    data-width="100%"
+                    name="workc_entity"
+                    id="workc_entity"
+                    title="Tipo Entidad Beneficiada">
+                    <option value="Publica">Publica</option>
+                    <option value="Privada">Privada</option>
+                    <option value="Mixta">Mixta</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="md-form">
+            <select class="selectpicker show-tick dropup"
+                    data-header="Sector Aplicación"
+                    data-style="btn-info"
+                    data-width="100%"
+                    name="workc_sector"
+                    id="workc_sector"
+                    title="Sector Beneficiado">
+                    <option value="Agropecuario">
+                        Agropecuario
+                    </option>
+                    <option value="Servicios">
+                        Servicios
+                    </option>
+                    <option value="Industria">
+                        Industria
+                    </option>
+                    <option value="Transporte">
+                        Transporte
+                    </option>
+                    <option value="Comercio">
+                        Comercio
+                    </option>
+                    <option value="Educación">
+                        Educación
+                    </option>
+                    <option value="Financiero">
+                        Financiero
+                    </option>
+                    <option value="Minas y Energía"
+                            data-subtext="Oil & Gas">
+                        Minas y Energía
+                    </option>
+                    <option value="Solidario">
+                        Solidario
+                    </option>
+                    <option value="Comunicaciones"
+                            data-subtext="Telcos">
+                        Comunicaciones
+                    </option>
+            </select>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-4">
+        <div class="md-form">
+            <label for="workc_timele">
+                Tiempo de Uso Desde Lanzamiento
+            </label>
+            <input type="number"
+                   id="workc_timele"
+                   name="workc_timele"
+                   class="form-control"
+                   data-error=".errorTime">
+        </div>
+        <div class="errorTime text-center"></div>
+    </div>
+    <div class="col-lg-2">
+        <div class="md-form">
+            <select class="selectpicker show-tick dropup"
+                    data-header="Seleccione"
+                    data-style="btn-info"
+                    data-width="100%"
+                    name="work_ttim"
+                    id="work_ttim">
+                <option>Dias</option>
+                <option selected>Meses</option>
+                <option>Años</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="input-group date">
+            <input type="text"
+                   id="workc_update"
+                   name="workc_update"
+                   class="datepicker"
+                   data-date-format='yyyy-mm-dd'
+                   placeholder="Año-Mes-Dia Fecha Última Actualización">
+            <div class="input-group-addon" style="color:fafafa !important">
+                <i class="fa fa-calendar-o"></i>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-3">
+        <div class="md-form">
+            <label for="workc_timede">
+                Costo Tiempo de Desarrollo
+            </label>
+            <input type="number"
+                   id="workc_timede"
+                   name="workc_timede"
+                   class="form-control"
+                   data-error=".errorTimed">
+        </div>
+        <div class="errorTimed text-center"></div>
+    </div>
+    <div class="col-lg-2">
+        <div class="md-form">
+            <select class="selectpicker show-tick dropup"
+                    data-header="Seleccione"
+                    data-style="btn-info"
+                    data-width="100%"
+                    name="work_tcos"
+                    id="work_tcos">
+                <option>Dias</option>
+                <option selected>Meses</option>
+                <option>Años</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="md-form">
+            <textarea type="text"
+                      id="workc_dscupd"
+                      name="workc_dscupd"
+                      class="md-textarea"
+                      data-error=".errorDesc">
+            </textarea>
+            <label for="workc_dscupd" class="labeltxt" id="labeltxt">Descripción Actualizaciones</label>
+        </div>
+        <div class="errorDesc text-center"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-lg-6" align="left">
+        <div class="row">
+            <label for="workc_produc" class="mr-3">
+                <b>Actualmente en Producción: </b>
+            </label>
+            <div class="radio radio-info radio-inline">
+                <input id="produc1"
+                       value="True"
+                       name="workc_produc"
+                       type="radio">
+                <label for="produc1"> Si </label>
+            </div>
+            <div class="radio radio-info radio-inline">
+                <input id="produc2"
+                       value="False"
+                       name="workc_produc"
+                       type="radio">
+                <label for="produc2"> No </label>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5 offset-lg-1">
+        <div class="md-form">
+            <select class="selectpicker show-tick dropup"
+                    data-header="Metodología de Desarrollo"
+                    data-style="btn-info"
+                    data-width="100%"
+                    name="workc_method"
+                    id="workc_method"
+                    title="Seleccione Metodología de Desarrollo">
+                    <option value="1"
+                            data-subtext="Enfoque Agíl">
+                        Scrum
+                    </option>
+                    <option value="2"
+                            data-subtext="Enfoque Agíl">
+                        AUP
+                    </option>
+                    <option value="3"
+                            data-subtext="Enfoque Agíl">
+                        Incremental
+                    </option>
+                    <option value="4"
+                            data-subtext="Enfoque Agíl">
+                        IWeb
+                    </option>
+                    <option value="5"
+                            data-subtext="Enfoque Agíl">
+                        XP
+                    </option>
+                    <option value="6">
+                        Cascada
+                    </option>
+                    <option value="7">
+                        RUP
+                    </option>
+                    <option value="10">
+                        Modelo Espiral
+                    </option>
+                    <option value="9">
+                        No Especificado
+                    </option>
+            </select>
+        </div>
+    </div>
+</div>

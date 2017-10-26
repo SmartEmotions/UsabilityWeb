@@ -1,1 +1,310 @@
 /* YOUR CUSTOM STYLES */
+/* Main Style to Navabar and Carousel ----------------------------------------*/
+html,
+body,
+.view
+{
+    height: 100%;
+}
+
+a{
+    text-align: center;
+}
+
+.top-nav-collapse
+{
+    background-color: #263238;
+}
+
+/*.navbar.scrolling-navbar
+{
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}*/
+
+footer.page-footer
+{
+    background-color: #263238;
+    margin-top: 0;
+}
+
+@media only screen and (max-width: 768px)
+{
+    .navbar
+    {
+        background-color: #263238;
+    }
+    .objects-init
+    {
+        margin-top: 3rem;
+    }
+}
+@media only screen and (max-height: 480px)
+{
+    .objects-init
+    {
+        margin-top: 7rem;
+    }
+}
+/* Carousel ------------------------------------------------------------------*/
+
+.carousel,
+.carousel-item,
+.active
+{
+    height: 100%;
+}
+
+.carousel-inner
+{
+    height: 100%;
+}
+
+.carousel .carousel-item video
+{
+    width: 100% !important;
+    height: auto;
+    min-height: 100%;
+    object-fit: cover;
+}
+
+.view
+{
+    width: 100%;
+}
+
+.carousel-caption
+{
+    height: 100%;
+    padding-top: 7rem;
+}
+/**************************************************************************/
+/**************             Personalized Tabs            ******************/
+/**************************************************************************/
+.wizard
+{
+    margin: 20px auto;
+    background: transparent;
+}
+
+.wizard .nav-tabs
+{
+    position: relative;
+    margin: 2rem auto;
+    border-bottom-color: #e0e0e0;
+}
+
+.wizard > div.wizard-inner
+{
+    position: relative;
+}
+
+.connecting-line
+{
+    height: 3px;
+    background: #e0e0e0;
+    position: absolute;
+    width: 80%;
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    top: 40%;
+    z-index: -1;
+}
+
+span.round-tab
+{
+    width: 90px;
+    height: 90px;
+    line-height: 90px;
+    display: inline-block;
+    border-radius: 100px;
+    background: #fff !important;
+    border: 2px solid #263238;
+    z-index: 2;
+    left: 0;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+span.round-tab i
+{
+    color:#00695c !important;
+}
+/********************* Active Tab *********************/
+.wizard a.active span.round-tab
+{
+    background: #fff;
+    border: 2px solid #2BBBAD;
+}
+.wizard a.active span.round-tab i
+{
+    color: #2BBBAD !important;
+}
+/****************** Hover Round Tab *******************/
+span.round-tab:hover
+{
+    color: #2BBBAD;
+    border: 2px solid #2BBBAD;
+}
+
+span.round-tab:hover > i
+{
+    color: #2BBBAD !important;
+}
+
+.wizard .nav-tabs > li
+{
+    width: 25%;
+}
+
+.wizard li:after
+{
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 0;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 5px solid transparent;
+    border-bottom-color: #5bc0de;
+    transition: 0.1s ease-in-out;
+}
+
+.wizard a.active:after
+{
+    content: " ";
+    position: absolute;
+    left: 46%;
+    opacity: 1;
+    margin: 0 auto;
+    bottom: 0px;
+    border: 10px solid transparent;
+    border-bottom-color: #2BBBAD;
+}
+
+.wizard .nav-tabs > li a
+{
+    width: 70px;
+    height: 70px;
+    margin: 20px auto;
+    border-radius: 100%;
+    padding: 0;
+}
+
+.wizard .nav-tabs > li a:hover
+{
+    background: transparent !important;
+}
+
+.wizard .tab-pane
+{
+    position: relative;
+    padding-top: 0.5rem;
+}
+
+
+@media( max-width : 585px )
+{
+
+    .wizard
+    {
+        width: 90%;
+        height: auto !important;
+    }
+
+    span.round-tab
+    {
+        font-size: 16px;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard .nav-tabs > li a
+    {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+    }
+
+    .wizard li.active:after
+    {
+        content: " ";
+        position: absolute;
+        left: 35%;
+    }
+}
+
+
+/******************************************************************************/
+/*******************      Select Style for Boostrap     ***********************/
+/* YOUR CUSTOM STYLES */
+.dropdown-toggle.btn-default
+{
+    color: #292b2c;
+    background-color: #fff;
+    border-color: #ccc;
+}
+
+.bootstrap-select.show>.dropdown-menu>.dropdown-menu
+{
+    display: block;
+}
+
+.bootstrap-select > .dropdown-menu > .dropdown-menu li.hidden
+{
+    display:none;
+}
+
+.bootstrap-select > .dropdown-menu > .dropdown-menu li a
+{
+    display: block;
+    width: 100%;
+    padding: 3px 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #292b2c;
+    text-align: inherit;
+    white-space: nowrap;
+    background: 0 0;
+    border: 0;
+}
+
+.bootstrap-select > .dropdown-toggle > span.filter-option
+{
+    float: inherit !important;
+}
+
+.dropdown-menu > li.active > a
+{
+    color: #fff !important;
+    background-color: #337ab7 !important;
+}
+
+.bootstrap-select .check-mark::after
+{
+    content: "✓";
+}
+
+.bootstrap-select .bs-caret::after, .bootstrap-select::after
+{
+    display: none !important;
+}
+
+.bootstrap-select button
+{
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+/* Make filled out selects be the same size as empty selects */
+.bootstrap-select.btn-group .dropdown-toggle .filter-option
+{
+    display: inline !important;
+}
+
+.md-form .btn.dropdown-toggle
+{
+    margin-bottom: 0 !important;
+}

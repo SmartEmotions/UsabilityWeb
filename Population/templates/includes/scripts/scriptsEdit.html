@@ -1,0 +1,106 @@
+<script type="text/javascript">
+$('#form_edit').validate({
+    rules: {
+        work_name: {
+            required: true,
+            minlength: 5
+        },
+        work_type:
+        {
+            required: true
+        },
+        work_uevalu:
+        {
+            required: true
+        },
+        work_status:
+        {
+            required: true
+        },
+        work_year:
+        {
+            required: true,
+            min:2010,
+            max:2017
+        },
+    },
+    messages: {
+        work_name: {
+            required: "Digite Nombre Trabajo de Grado",
+            minlength: "Nombre Muy Corto"
+        },
+        work_type:
+        {
+            required: "Seleccione Tipo Trabajo de Grado"
+        },
+        work_uevalu:
+        {
+            required: "Señale Evaluación de Usabilidad"
+        },
+        work_status:
+        {
+            required: "Señale Estado Trabajo de Grado"
+        },
+        work_year:
+        {
+            required: "Digite Año",
+            min:"Año Menor a 2010",
+            max:"Año Mayor a 2018"
+        },
+    },
+    errorElement : 'div',
+    errorPlacement: function(error, element)
+    {
+        var placement = $(element).data('error');
+        if (placement)
+        {
+            $(placement).append(error)
+        }
+        else
+        {
+            error.insertAfter(element);
+        }
+    },
+    submitHandler: function(form)
+    {
+        var data = ($('#form_edit').serialize()+'&'+$.param({ 'worke_type': ($('#worke_type').selectpicker('val')).toString() }));
+        $.ajax({
+            url: "{% url 'work-edit' %}",
+            type: 'POST',
+            data: data
+        }).done(function(datos)
+        {
+            if (datos == 1)
+            {
+                $('#search-work').submit();
+                $('#form_edit').trigger("reset");
+                $('#worke_type').selectpicker('deselectAll');
+                $('input[name="worke_uevalu"]').attr('checked', false);
+                $('input[name="worke_develo"]').attr('checked', false);
+                $('input[name="worke_status"]').attr('checked', false);
+                $('#modalEdit').modal('hide');
+            }
+        });
+    }
+});
+
+function editInfo(id, name, year, status, type, usability, dev)
+{
+    $('#modalEdit').modal('show');
+    $('#worke_name').val(name);
+    $('#worke_name').trigger( "focusin" );
+    $('#worke_year').val(year);
+    $('#worke_year').trigger( "focusin" );
+    $('#worke_id').val(id);
+    $('#worke_type').selectpicker('val', type.split(','));
+    ue = (usability==true ? "True":"False");
+    de = (dev==true && dev != null ? "True":"False");
+    st = (status == 'T'? "T":"P");
+    $('input[name=worke_uevalu][value='+ue+']'
+        ).attr('checked', true);
+    $('input[name=worke_status][value='+st+']'
+        ).attr('checked', true);
+    $('input[name=worke_develo][value='+de+']'
+        ).attr('checked', true);
+}
+</script>

@@ -1,0 +1,206 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block Title %}
+    Trabajos de Grado
+{% endblock %}
+{% block Css %}
+<link rel="stylesheet" href="{% static 'select/css/bootstrap-select.css' %}">
+<style media="screen">
+    .navbar
+    {
+        background-color: #263238;
+    }
+</style>
+{% endblock %}
+{% block Content %}
+<div class="container-fluid" style="height: 5rem">
+
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-12">
+            <section class="text-center">
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line wow fadeIn"
+                             data-wow-delay="0.8s">
+                        </div>
+                        <ul class="nav nav-tabs" id="tabs-popu" role="tablist">
+                            <li class="nav-item wow fadeIn"
+                                data-wow-delay="0.2s">
+                                <a href="#search"
+                                   class="active"
+                                   data-toggle="tab" aria-controls="search"
+                                   role="tab"
+                                   id="tab-search"
+                                   data-toggle="tooltip" data-placement="bottom">
+                                    <span class="round-tab"
+                                          data-placement="bottom"
+                                          data-toggle='tooltip'
+                                          title="Buscar Trabajo de Grado">
+                                        <!-- Buscar -->
+                                        <i class="fa fa-search"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item wow fadeIn"
+                                data-wow-delay="0.5s">
+                                <a href="#characterization"
+                                   data-toggle="tab" aria-controls="characterization"
+                                   role="tab"
+                                   id="tab-charac"
+                                   data-toggle="tooltip" data-placement="bottom">
+                                    <span class="round-tab"
+                                          data-placement="bottom"
+                                          data-toggle='tooltip'
+                                          title="Caracterizar Trabajo De Grado">
+                                        <i class="fa fa-pencil-square-o"></i>
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="nav-item wow fadeIn"
+                                data-wow-delay="0.3s">
+                                <a href="#types"
+                                   data-toggle="tab" aria-controls="types"
+                                   role="tab"
+                                   id="wk-typ">
+                                    <span class="round-tab"
+                                          data-placement="bottom"
+                                          data-toggle='tooltip'
+                                          title="Caracteristicas">
+                                        <i class="fa fa-bar-chart"></i>
+                                        <!-- Tipos -->
+                                    </span>
+
+                                </a>
+                            </li>
+                            <li class="nav-item wow fadeIn"
+                                data-wow-delay="0.4s">
+                                <a href="#usability"
+                                   data-toggle="tab" aria-controls="usability"
+                                   role="tab"
+                                   id="us-eva">
+
+                                    <span class="round-tab"
+                                          data-placement="bottom"
+                                          data-toggle='tooltip'
+                                          title="Análisis Caracterización">
+                                        <i class="fa fa-line-chart"></i>
+                                        <!-- Usabilidad -->
+                                    </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content" id="tab-content">
+                        <div class="tab-pane active"
+                             role="tabpanel"
+                             id="search">
+                            {% include "includes/searchWorks.html" %}
+                        </div>
+                        <div class="tab-pane"
+                             role="tabpanel"
+                             id="types">
+                            {% include "includes/gradeWorks.html" %}
+                            {% include "includes/characteristics/frequency-entit.html" %}
+                            {% include "includes/characteristics/frequency-secto.html" %}
+                            {% include "includes/characteristics/frequency-sgdb.html" %}
+                            {% include "includes/characteristics/frequency-lback.html" %}
+                            {% include "includes/characteristics/frequency-bfram.html" %}
+                            {% include "includes/characteristics/frequency-lfron.html" %}
+                            {% include "includes/characteristics/frequency-ffram.html" %}
+                            {% include "includes/characteristics/frequency-appse.html" %}
+                        </div>
+                        <div class="tab-pane"
+                             role="tabpanel"
+                             id="usability">
+                            {% include "includes/usabilityWorks.html" %}
+                        </div>
+                        <div class="tab-pane"
+                             role="tabpanel"
+                             id="characterization">
+                            {% include "includes/characterizationWorks.html" %}
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+</div>
+{% include "includes/modalAdd.html" %}
+{% include "includes/modalEdit.html" %}
+{% endblock %}
+{% block JavaScript %}
+<script type="text/javascript"
+        src="{% static 'js/typeahead.bundle.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'js/chartplugins.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'js/functions.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'select/js/bootstrap-select.js' %}"></script>
+<script type="text/javascript"
+        src="{% static 'select/js/i18n/defaults-es_CL.min.js' %}">
+</script>
+{% include "includes/scripts/scriptsAdd.html" %}
+{% include "includes/scripts/scriptsSearch.html" %}
+{% include "includes/scripts/scriptsCharacterization.html" %}
+{% include "includes/scripts/scriptsEdit.html" %}
+{% include "includes/scripts/scriptsLoadCharacteristics.html" %}
+<script type="text/javascript">
+    // ************************************************
+    // Init tooltips information **********************
+    $('[data-toggle="tooltip"]').tooltip()
+
+    $('#wk-typ').click(function ()
+    {
+        var canv = "works-types";
+        var labs = [{% for Type in  Works %}
+                        "{{ Type.work_type }}",
+                    {% endfor %}];
+        var data = [{% for Total in  Works %}
+                        "{{ Total.Total }}",
+                    {% endfor %}];
+        var dalb = "Cantidad";
+        var bgcl = ["rgba(0,255,100,0.4)",
+                    "rgba(239, 127, 26,0.4)",
+                    "rgba(0,255,0,0.4)",
+                    "rgba(0, 128, 128,0.4)",
+                    "rgba(139, 127, 26,0.4)",
+                    "rgba(0,200,0,0.4)",
+                    "rgba(50, 128, 128,0.4)"];
+        var perc = true;
+        var width = 0.8;
+        drawBar(canv, labs, data, dalb, bgcl, perc, width, 70);
+
+        var canv = "works-usability";
+        var labs = ['Si', 'No'];
+        var data = ["{{ Usability.Si }}", "{{ Usability.No }}"];
+        var dalb = "Usabilidad";
+        var bgcl = ["rgba(0,255,0,0.5)","rgba(239, 127, 26,0.5)"];
+        var perc = true;
+        var width = 0.5;
+        drawBar(canv, labs, data, dalb, bgcl, perc, width, 70);
+    });
+
+
+    $('.typeahead').typeahead(
+    {
+        hint: false,
+        highlight: true,
+        minLength: 3
+    },
+    {
+        limit:3,
+        displayKey: 'name',
+        source: function(query, syncResults, asyncResults)
+        {
+            $.get({% url 'sea-wnames' %} + '?name=' + query, function(data)
+            {
+                asyncResults(data);
+            });
+        }
+    });
+</script>
+{% endblock %}

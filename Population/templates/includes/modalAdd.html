@@ -1,0 +1,178 @@
+<div class="modal fade"
+     id="modalAdd" tabindex="-1"
+     role="dialog" aria-labelledby="modalAdd"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-notify modal-success"
+         role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <h3 class="heading lead">
+                    Adicionar Trabajo de Grado
+                </h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" class="white-text">&times;</span>
+                </button>
+            </div>
+
+            <!--Body-->
+            <form id="form_addn">
+                {% csrf_token %}
+                <div class="modal-body">
+                    <div class="text-left pb-4">
+                        <h4>
+                            Complete Formulario
+                        </h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 m-auto">
+                            <div class="md-form">
+                                <label for="work_name">
+                                    Nombre Trabajo
+                                </label>
+                                <input type="text"
+                                       id="work_name"
+                                       name="work_name"
+                                       class="form-control"
+                                       data-error=".errorAddName">
+                            </div>
+                            <div class="errorAddName text-center"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <div class="md-form">
+                                <select class="selectpicker show-tick dropup"
+                                        data-header="Tipo Trabajo De Grado"
+                                        data-style="btn-info"
+                                        data-width="100%"
+                                        id="work_type"
+                                        title="Tipo Trabajo De Grado"
+                                        data-error=".errorAddType" multiple>
+                                        <option value='Aplicación Web'>Aplicación Web</option>
+                                        <option value='Aplicación Móvil'>Aplicación Móvil</option>
+                                        <option value='Aplicación De Escritorio'>Aplicación De Escritorio</option>
+                                        <option value='Ingeniería De Software'>Ingeniería De Software</option>
+                                        <option value='Bases y Mineria De Datos'>Bases y Mineria De Datos</option>
+                                        <option data-subtext="Grid & Parallel" value='Sistemas Distribuidos'>Sistemas Distribuidos</option>
+                                        <option value='Portal Web'>Portal Web</option>
+                                        <option data-subtext="XBox">Video Juego</option>
+                                        <option value='Auditoria'>Auditoria</option>
+                                        <option value='Redes y Telematica'>Redes y Telematica</option>
+                                        <option value='Inteligencia Artificial'>Inteligencia Artificial</option>
+                                        <option value='OVAS'>OVAS</option>
+                                        <option value='Otro'>Otro</option>
+                                </select>
+                            </div>
+                            <div class="errorAddType text-center"></div>
+                        </div>
+
+                        <div class="col-lg-4">
+                            <div class="md-form">
+                                <label for="work_year">
+                                    Año
+                                </label>
+                                <input type="text"
+                                       id="work_year"
+                                       name="work_year"
+                                       class="form-control"
+                                       data-error=".errorAddYear">
+                            </div>
+                            <div class="errorAddYear text-center"></div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-6" align="left">
+                            <div class="row">
+                                <label for="work_uevalu" class="mr-3 ml-3"><b>
+                                    Evaluación Usabilidad: </b>
+                                </label>
+                                <div class="radio radio-info radio-inline">
+                                    <input id="evaluationYes"
+                                           value="True"
+                                           name="work_uevalu"
+                                           type="radio"
+                                           data-error=".errorAddEvaluation">
+                                    <label for="evaluationYes"> Si </label>
+                                </div>
+                                <div class="radio radio-info radio-inline">
+                                    <input id="evaluationNo"
+                                           value="False"
+                                           name="work_uevalu"
+                                           type="radio"
+                                           data-error=".errorAddEvaluation">
+                                    <label for="evaluationNo"> No </label>
+                                </div>
+                            </div>
+                            <div class="errorAddEvaluation text-center"></div>
+                        </div>
+                        <div class="col-lg-6" align="left">
+                            <div class="row">
+                                <label for="work_status" class="mr-3 ml-3"><b>
+                                    Estado: </b>
+                                </label>
+                                <div class="radio radio-info radio-inline">
+                                    <input id="statusEnd"
+                                           value="T"
+                                           name="work_status"
+                                           type="radio"
+                                           data-error=".errorAddStatus">
+                                    <label for="statusEnd"> Terminado </label>
+                                </div>
+                                <div class="radio radio-info radio-inline">
+                                    <input id="statusProcess"
+                                           value="P"
+                                           name="work_status"
+                                           type="radio"
+                                           data-error=".errorAddStatus">
+                                    <label for="statusProcess"> En Proceso </label>
+                                </div>
+                            </div>
+                            <div class="errorAddStatus text-center"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6" align="left">
+                            <div class="row">
+                                <label for="work_develo" class="mr-3 ml-3"><b>
+                                    Desarrollo Software:: </b>
+                                </label>
+                                <div class="radio radio-info radio-inline">
+                                    <input id="developYes"
+                                           value="True"
+                                           name="work_develo"
+                                           type="radio"
+                                           data-error=".errorAddDevelop">
+                                    <label for="developYes"> Si </label>
+                                </div>
+                                <div class="radio radio-info radio-inline">
+                                    <input id="developNo"
+                                           value="False"
+                                           name="work_develo"
+                                           type="radio"
+                                           data-error=".errorAddDevelop">
+                                    <label for="developNo"> No </label>
+                                </div>
+                            </div>
+                            <div class="errorAddDevelop text-center"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <a type="button"
+                       class="btn btn-primary-modal"
+                       data-dismiss="modal">
+                       Cancelar
+                       <i class="fa fa-ban ml-1"></i>
+                   </a>
+                   <button type="submit"
+                           class="btn btn-outline-secondary-modal waves-effect">
+                        Guardar
+                   </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

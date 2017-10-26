@@ -1,0 +1,111 @@
+<script type="text/javascript">
+$('#search-work').validate({
+    rules: {
+        work_name: {
+            required: true,
+            minlength: 5
+        },
+    },
+    messages: {
+        work_name: {
+            required: "Por Favor, digite Nombre Trabajo de Grado",
+            minlength: "Disculpe, Nombre Trabajo de Grado Muy Corto"
+        },
+    },
+    errorElement : 'div',
+    errorPlacement: function(error, element)
+    {
+        var placement = $(element).data('error');
+        if (placement)
+        {
+            $(placement).append(error)
+        }
+        else
+        {
+            error.insertAfter(element);
+        }
+    },
+    submitHandler: function(form)
+    {
+        $.ajax({
+            url: "{% url 'sea-work' %}",
+            type: 'POST',
+            data: $("#search-work").serialize()
+        }).done(function(datos)
+        {
+            $('#work_name').blur();
+            showResults(datos);
+        });
+    }
+});
+
+$('#btn-searchwork').click(function ()
+{
+    if ($('#search-work').valid())
+    {
+        $('#search-work').submit();
+    }
+});
+
+function showResults(datos)
+{
+    html = '';
+    if (datos.Empty)
+    {
+        html += '<h5>Lo sentimos, no se ha encontrado resultados con el nombre especificado, intente con otra frase';
+    }
+    else
+    {
+        datos.Works.forEach(elem =>
+        {
+            enable = ((elem.Type=="Aplicación Web" || elem.Type=="Aplicación Web y Móvil") ? "":"disabled");
+            usability = (elem.Usability ? "Si":"No");
+            develop = (elem.Develop ? "Si":"No");
+            status = (elem.Status=="T" ? "Terminado":"En Proceso");
+            html += `<div class="dropdown-divider"></div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h5><b>${elem.Name}</b></h5>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-6 offset-lg-2">
+                    <h5>Estado: <b>${status}</b></h5>
+                </div>
+                <div class="col-lg-4">
+                    <h5 title="Evaluacion de Usabilidad">Evaluación Usabilidad: <b>${usability}</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2">
+                    <h5>Año: <b>${elem.Year}</b></h5>
+                </div>
+                <div class="col-lg-6">
+                    <h5>Tipo: <b>${elem.Type}</b></h5>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Desarrollo De Software: <b>${develop}</b></h5>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 offset-lg-6" align="right">
+                    <button type="button" name="button"
+                            class="btn btn-info btn-sm"
+                            onclick="editInfo(${elem.Id}, '${elem.Name}', '${elem.Year}', '${elem.Status}', '${elem.Type}', ${elem.Usability}, ${elem.Develop})">
+                        Editar Información
+                    </button>
+                </div>
+                <div class="col-lg-3" align="right">
+                    <button type="button" name="button"
+                            class="btn btn-success btn-sm"
+                            onclick="charatetization(${elem.Id}, '${elem.Name}', '${elem.Year}', '${elem.Status}', '${elem.Type}', ${elem.Usability}, ${elem.Develop})" ${enable}>
+                        Caracterizar Aplicación
+                    </button>
+                </div>
+            </div>`;
+        });
+    }
+    $('#search_results').html(html);
+}
+</script>

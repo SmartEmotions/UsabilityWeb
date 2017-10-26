@@ -1,0 +1,60 @@
+<section>
+    <div class="row text-justify wow fadeIn" data-wow-delay="0.2s">
+        <div class="col-lg-10 m-auto">
+            <h4 class="card-title text-center">
+                Caracterización Trabajos de Grado
+            </h4>
+            <h5 class="card-text mt-4 mb-4">
+                Caracterizar las aplicaciones web para conocer variables que se relacionan con la usabilidad, edite o agregue informacion de una aplicacion web desarrollada como trabajo de grado.
+            </h5>
+        </div>
+    </div>
+    {% include "includes/characterization/basic.html" %}
+    <div class="dropdown-divider"></div>
+    <form id="charac_form">
+        {% csrf_token %}
+        <input type="hidden" name="workc_id" id="workc_id" value="">
+        {% include "includes/characterization/details.html" %}
+        <div class="dropdown-divider"></div>
+        <div class="row mt-4 mb-4">
+            <div class="col-lg-12">
+                <h4>Tecnologias De Desarrollo</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                {% include "includes/characterization/backend.html" %}
+            </div>
+            <div class="col-lg-6">
+                {% include "includes/characterization/frameworkbackend.html" %}
+            </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                {% include "includes/characterization/frontend.html" %}
+            </div>
+            <div class="col-lg-6">
+                {% include "includes/characterization/frameworkfrontend.html" %}
+            </div>
+        </div>
+        <div class="dropdown-divider"></div>
+        <div class="row">
+            <div class="col-lg-6">
+                {% include "includes/characterization/sgdb.html" %}
+            </div>
+            <div class="col-lg-6">
+                {% include "includes/characterization/appserver.html" %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 offset-lg-8">
+                <button type="submit" name="button"
+                        class="btn btn-success btn-lg">
+                    Guardar Caracterización
+                    <i class="fa fa-save ml-4"></i>
+                </button>
+            </div>
+        </div>
+    </form>
+</section>

@@ -1,0 +1,93 @@
+<script type="text/javascript">
+$('#form_addn').validate({
+    rules: {
+        work_name: {
+            required: true,
+            minlength: 5
+        },
+        work_type:
+        {
+            required: true
+        },
+        work_uevalu:
+        {
+            required: true
+        },
+        work_status:
+        {
+            required: true
+        },
+        work_year:
+        {
+            required: true,
+            min:2010,
+            max:2017
+        },
+        work_develo:
+        {
+            required: true
+        }
+    },
+    messages: {
+        work_name: {
+            required: "Digite Nombre Trabajo de Grado",
+            minlength: "Nombre Muy Corto"
+        },
+        work_type:
+        {
+            required: "Seleccione Tipo Trabajo de Grado"
+        },
+        work_uevalu:
+        {
+            required: "Señale Evaluación de Usabilidad"
+        },
+        work_status:
+        {
+            required: "Señale Estado Trabajo de Grado"
+        },
+        work_year:
+        {
+            required: "Digite Año",
+            min:"Año Menor a 2010",
+            max:"Año Mayor a 2018"
+        },
+        work_develo:
+        {
+            required: 'Señale Desarrollo de Software'
+        }
+    },
+    errorElement : 'div',
+    errorPlacement: function(error, element)
+    {
+        var placement = $(element).data('error');
+        if (placement)
+        {
+            $(placement).append(error)
+        }
+        else
+        {
+            error.insertAfter(element);
+        }
+    },
+    submitHandler: function(form)
+    {
+        $.ajax({
+            url: "{% url 'add-work' %}",
+            type: 'POST',
+            data: ($("#form_addn").serialize()+'&'+$.param({ 'work_type':
+                  ($('#work_type').selectpicker('val')).toString()}))
+        }).done(function(datos)
+        {
+            if (datos == 1)
+            {
+                $('#form_addn').trigger("reset");
+                $('#work_type').selectpicker('deselectAll');
+                $('input[name="work_uevalu"]').attr('checked', false);
+                $('input[name="work_develo"]').attr('checked', false);
+                $('input[name="work_status"]').attr('checked', false);
+                $('#modalAdd').modal('hide');
+            }
+        });
+    }
+});
+</script>
