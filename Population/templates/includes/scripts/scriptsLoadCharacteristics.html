@@ -1,5 +1,5 @@
-
 <script type="text/javascript">
+// Flags
 var data_sgdb = false;
 var data_lback = false;
 var data_bfram = false;
@@ -8,6 +8,87 @@ var data_lfron = false;
 var data_ffram = false;
 var data_secto = false;
 var data_entit = false;
+//On Touch Move Mobile Version *************************************************
+$('#graph_sgdb').on({
+    'touchmove': function(e)
+    {
+        if (data_sgdb == false)
+        {
+            getdata('app_nsgdb');
+            data_sgdb = true;
+        }
+    }
+});
+$('#graph_lback').on({
+    'touchmove': function(e)
+    {
+        if (data_lback == false)
+        {
+            getdata('app_lback');
+            data_lback = true;
+        }
+    }
+});
+$('#graph_appse').on({
+    'touchmove': function(e)
+    {
+        if (data_appse == false)
+        {
+            getdata('app_appse');
+            data_appse = true;
+        }
+    }
+});
+$('#graph_fback').on({
+    'touchmove': function(e)
+    {
+        if (data_bfram == false)
+        {
+            getdata('app_bfram');
+            data_bfram = true;
+        }
+    }
+});
+$('#graph_lfron').on({
+    'touchmove': function(e)
+    {
+        if (data_lfron == false)
+        {
+            getdata('app_lfron');
+            data_lfron = true;
+        }
+    }
+});
+$('#graph_ffram').on({
+    'touchmove': function(e)
+    {
+        if (data_ffram == false)
+        {
+            getdata('app_ffram');
+            data_ffram = true;
+        }
+    }
+});
+$('#graph_secto').on({
+    'touchmove': function(e)
+    {
+        if (data_secto == false)
+        {
+            getdata('app_secto');
+            data_secto = true;
+        }
+    }
+});
+$('#graph_entit').on({
+    'touchmove': function(e)
+    {
+        if (data_entit == false)
+        {
+            getdata('app_entit');
+            data_entit = true;
+        }
+    }
+});
 $(window).scroll(function()
 {
     var hT = $('#graph_sgdb').offset().top;
@@ -33,132 +114,29 @@ $(window).scroll(function()
 
     var enT = $('#graph_entit').offset().top;
     var enH = $('#graph_entit').outerHeight();
-
     var wH = $(window).height();
     var wS = $(this).scrollTop();
-
-    if (data_sgdb == false)
-    {
-        data_sgdb = analizeScroll(wS, wH, hT, hH, 'app_nsgdb');
-    }
-    //data_sgdb = analizeScroll(wS, wH, hT, hH, data_sgdb, 'app_nsgdb') == true ? true:false;
-    // if (wS > (hT+hH-wH) && (hT > wS) && (wS+wH > hT+hH))
-    // {
-    //     if (typeof data_sgdb == 'undefined')
-    //     {
-    //         data_sgdb = true;
-    //         getdata('app_nsgdb');
-    //     }
-    // }
-    if (wS > (lT+lH-wH) && (lT > wS) && (wS+wH > lT+lH))
-    {
-        if (typeof data_lback == 'undefined')
-        {
-            data_lback = true;
-            getdata('app_lback');
-        }
-    }
-    else if (wS > (sT+sH-wH) && (sT > wS) && (wS+wH > sT+sH))
-    {
-        if (typeof data_appse == 'undefined')
-        {
-            data_appse = true;
-            getdata('app_appse');
-        }
-    }
-
-    else if (wS > (fbT+fbH-wH) && (fbT > wS) && (wS+wH > fbT+fbH))
-    {
-        if (typeof data_bfram == 'undefined')
-        {
-            data_bfram = true;
-            getdata('app_bfram');
-        }
-    }
-
-    else if (wS > (lfT+lfH-wH) && (lfT > wS) && (wS+wH > lfT+lfH))
-    {
-        if (typeof data_lfron == 'undefined')
-        {
-            data_lfron = true;
-            getdata('app_lfron');
-        }
-    }
-
-    else if (wS > (ffT+ffH-wH) && (ffT > wS) && (wS+wH > ffT+ffH))
-    {
-        if (typeof data_ffram == 'undefined')
-        {
-            data_ffram = true;
-            getdata('app_ffram');
-        }
-    }
-    else if (wS > (scT+scH-wH) && (scT > wS) && (wS+wH > scT+scH))
-    {
-        if (typeof data_secto == 'undefined')
-        {
-            data_secto = true;
-            getdata('app_secto');
-        }
-    }
-
-    else if (wS > (enT+enH-wH) && (enT > wS) && (wS+wH > enT+enH))
-    {
-        if (typeof data_entit == 'undefined')
-        {
-            data_entit = true;
-            getdata('app_entit');
-        }
-    }
+    data_sgdb = (data_sgdb)?true:analizeScroll(wS,wH,hT,hH,'app_nsgdb');
+    data_lback = (data_lback)?true:analizeScroll(wS,wH,lT,lH,'app_lback');
+    data_appse = (data_appse)?true:analizeScroll(wS,wH,sT,sH,'app_appse');
+    data_bfram = (data_bfram)?true:analizeScroll(wS,wH,fbT,fbH,'app_bfram');
+    data_lfron = (data_lfron)?true:analizeScroll(wS,wH,lfT,lfH,'app_lfron');
+    data_ffram = (data_ffram)?true:analizeScroll(wS,wH,ffT,ffH,'app_ffram');
+    data_secto = (data_secto)?true:analizeScroll(wS,wH,scT,scH,'app_secto');
+    data_entit = (data_entit)?true:analizeScroll(wS,wH,enT,enH,'app_entit');
 });
 
 function getdata(characteristic)
 {
-    var canvas = '';
-    var url = '';
-    if (characteristic == 'app_nsgdb')
-    {
-        canvas = 'worksc-sgdb';
-        url = "{% url 'web-apps-sgdb' %}";
-    }
-    else if (characteristic == 'app_lback')
-    {
-        canvas = 'worksc-lback';
-        url = "{% url 'web-apps-lback' %}";
-    }
-    else if (characteristic == 'app_appse')
-    {
-        canvas = 'worksc-appse';
-        url = "{% url 'web-apps-appse' %}";
-    }
-    else if (characteristic == 'app_bfram')
-    {
-        canvas = 'worksc-fback';
-        url = "{% url 'web-apps-bfram' %}";
-    }
-
-    else if (characteristic == 'app_lfron')
-    {
-        canvas = 'worksc-lfron';
-        url = "{% url 'web-apps-lfron' %}";
-    }
-
-    else if (characteristic == 'app_ffram')
-    {
-        canvas = 'worksc-ffram';
-        url = "{% url 'web-apps-ffram' %}";
-    }
-
-    else if (characteristic == 'app_secto')
-    {
-        canvas = 'worksc-secto';
-        url = "{% url 'web-apps-secto' %}";
-    }
-    else if (characteristic == 'app_entit')
-    {
-        canvas = 'worksc-entit';
-        url = "{% url 'web-apps-entit' %}";
-    }
+    var [canvas,url]=(characteristic=='app_nsgdb')?['worksc-sgdb',"{% url 'web-apps-sgdb' %}"]:
+               (characteristic=='app_lback')?['worksc-lback',"{% url 'web-apps-lback' %}"]:
+               (characteristic=='app_appse')?['worksc-appse',"{% url 'web-apps-appse' %}"]:
+               (characteristic=='app_bfram')?['worksc-fback',"{% url 'web-apps-bfram' %}"]:
+               (characteristic=='app_lfron')?['worksc-lfron',"{% url 'web-apps-lfron' %}"]:
+               (characteristic=='app_ffram')?['worksc-ffram',"{% url 'web-apps-ffram' %}"]:
+               (characteristic=='app_secto')?['worksc-secto',"{% url 'web-apps-secto' %}"]:
+               (characteristic=='app_entit')?['worksc-entit',"{% url 'web-apps-entit' %}"]:
+               ('', '');
     $.ajax({
         url: url,
         type: 'GET',
@@ -166,6 +144,7 @@ function getdata(characteristic)
     }).done(function(datos)
     {
         drawDataCharacteristic(datos, characteristic, canvas);
+        return true;
     });
 }
 
@@ -175,39 +154,14 @@ function drawDataCharacteristic(info, characteristic, canvas)
     var labs = [];
     var data = [];
     info.forEach(elem => {
-        if (characteristic == 'app_nsgdb')
-        {
-            labs.push(elem.app_nsgdb);
-        }
-        else if (characteristic == 'app_lback')
-        {
-            labs.push(elem.app_lback);
-        }
-        else if (characteristic == 'app_appse')
-        {
-            labs.push(elem.app_appse);
-        }
-        else if (characteristic == 'app_bfram')
-        {
-            labs.push(elem.app_bfram);
-        }
-        else if (characteristic == 'app_lfron')
-        {
-            labs.push(elem.app_lfron);
-        }
-        else if (characteristic == 'app_ffram')
-        {
-            labs.push(elem.app_ffram);
-        }
-        else if (characteristic == 'app_secto')
-        {
-            labs.push(elem.app_secto);
-        }
-
-        else if (characteristic == 'app_entit')
-        {
-            labs.push(elem.app_entit);
-        }
+        (characteristic == 'app_nsgdb'? labs.push(elem.app_nsgdb) :
+         characteristic == 'app_lback'? labs.push(elem.app_lback) :
+         characteristic == 'app_appse'? labs.push(elem.app_appse) :
+         characteristic == 'app_bfram'? labs.push(elem.app_bfram) :
+         characteristic == 'app_lfron'? labs.push(elem.app_lfron) :
+         characteristic == 'app_ffram'? labs.push(elem.app_ffram) :
+         characteristic == 'app_secto'? labs.push(elem.app_secto) :
+         characteristic == 'app_entit'? labs.push(elem.app_entit) : false);
         data.push(elem.Total);
     });
 
@@ -221,9 +175,8 @@ function drawDataCharacteristic(info, characteristic, canvas)
                 "rgba(50, 128, 128,0.4)"];
     var perc = true;
     var width = 0.8;
-    drawBar(canv, labs, data, dalb, bgcl, perc, width, 20);
+    drawBar(canv, labs, data, dalb, bgcl, perc, width, 30);
 }
-
 
 function analizeScroll(wS, wH, hT, hH, v)
 {
