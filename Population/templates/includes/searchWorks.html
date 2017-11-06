@@ -17,32 +17,30 @@
                            class="typeahead form-control"
                            data-error=".errorSearchName">
                 </div>
-                <div class="errorSearchName text-left pb-2"></div>
+                <div class="errorSearchName text-left mb-2"></div>
             </form>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-3 offset-lg-1 col-sm-12" id="btn_search">
-            <button type="submit"
-                    class="btn btn-info btn-lg"
-                    onclick="searchWork()">
+            <a class="btn btn-info"
+                onclick="searchWork()">
                 Buscar
                 <i class="fa fa-search right ml-3"></i>
-            </button>
+            </a>
         </div>
-        <div class="offset-lg-2 col-lg-3 col-sm-12" align="right">
-            <button type="button"
-                    class="btn btn-success btn-lg"
-                    data-toggle="modal" data-target="#modalAdd">
+        <div class="offset-lg-4 col-lg-3 col-sm-12" align="right">
+            <a class="btn default-color"
+                data-toggle="modal" data-target="#modalAdd">
                 Agregar
                 <i class="fa fa-plus right ml-3"></i>
-            </button>
+            </a>
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-10 m-auto pt-4 pb-4" id="search_results">
+        <div class="col-lg-10 m-auto pt-4 mb-4" id="search_results">
             <h5 class="card-text mt-4 mb-4 text-center">
-                <p>Buscar un Trabajo de Grado por el nombre para editar su información, caracterizar o revisar las características  disponibles. Tenemos registrados<b id="works-cant">162</b> trabajos de grado.</p>
+                <p>Buscar un Trabajo de Grado por el nombre para editar su información, caracterizar o revisar las características  disponibles. Tenemos registrados<b id="works-cant"> 162 </b> trabajos de grado.</p>
                 <p>Registre su trabajo de grado y aporte a esta investigación. Si su trabajo es una Aplicación Web puede evaluar la usabilidad de los prototipos de manera progresiva hasta obtener un nivel de usabilidad deseado.</p>
             </h5>
         </div>
@@ -52,7 +50,7 @@
 <style type="text/css">
     .tt-query, .tt-hint
     {
-        border: 2px solid #00C851;
+        border: 2px solid #00a5c9;
         border-radius: 8px;
         font-size: 18px;
         height: 40px;
@@ -79,10 +77,16 @@
         padding: 8px 0;
         width: 100% !important;
     }
+
+    .tt-highlight
+    {
+        font-weight: bold;
+    }
+
     .tt-suggestion.tt-selectable.tt-cursor
     {
         cursor: pointer;
-        background-color: #00C851;
+        background-color: #00a5c9;
         color: #FFFFFF;
     }
     .tt-suggestion
@@ -94,7 +98,7 @@
     .tt-suggestion:hover
     {
         cursor: pointer;
-        background-color: #00C851;
+        background-color: #00a5c9;
         color: #FFFFFF;
     }
     .tt-suggestion p

@@ -5,6 +5,17 @@ body,
 .view
 {
     height: 100%;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 17px;
+}
+
+button, input, optgroup, select, textarea{
+    font-family: 'Open Sans Condensed' !important;
+    font-size: 17px;
+}
+
+b{
+    font-weight: bold;
 }
 
 a{
@@ -13,7 +24,7 @@ a{
 
 .top-nav-collapse
 {
-    background-color: #263238;
+    background-color: #00a5c9;
 }
 
 /*.navbar.scrolling-navbar
@@ -27,15 +38,21 @@ a{
 }
 footer.page-footer
 {
-    background-color: #263238;
+    background-color: #ffffff;
     margin-top: 0;
 }
+
+footer.page-footer a
+{
+    color: #212121;
+}
+
 
 @media only screen and (max-width: 768px)
 {
     .navbar
     {
-        background-color: #263238;
+        background-color: #00a5c9;
     }
     .objects-init
     {
@@ -49,6 +66,66 @@ footer.page-footer
         margin-top: 7rem;
     }
 }
+
+/* Buttons Style **************************************************************/
+button.btn-lg{
+    font-size: 15px !important
+}
+
+button.btn-personalized{
+    background-color: #316f68;
+}
+/* Error Div   ---------------------------------------------------------------*/
+
+div.error
+{
+    position: relative;
+    top: -0.5rem;
+    left: 0rem;
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+    color:#CC0000 !important;
+    -webkit-transform: translateY(0%);
+    -ms-transform: translateY(0%);
+    -o-transform: translateY(0%);
+    transform: translateY(0%);
+}
+/* Scroll To Top Button ------------------------------------------------------*/
+.scroll-top-wrapper {
+    position: fixed;
+    opacity: 0;
+    visibility: hidden;
+	overflow: hidden;
+	text-align: center;
+	z-index: 99999999;
+    background-color: #00a5c9;
+	color: #eeeeee;
+	width: 50px;
+	height: 50px;
+	line-height: 48px;
+	right: 30px;
+	bottom: 30px;
+	padding-top: 2px;
+	border-top-left-radius: 25px;
+	border-top-right-radius: 25px;
+	border-bottom-right-radius: 25px;
+	border-bottom-left-radius: 25px;
+	-webkit-transition: all 0.5s ease-in-out;
+	-moz-transition: all 0.5s ease-in-out;
+	-ms-transition: all 0.5s ease-in-out;
+	-o-transition: all 0.5s ease-in-out;
+	transition: all 0.5s ease-in-out;
+}
+.scroll-top-wrapper:hover
+{
+	background-color: #2BBBAD;
+}
+.scroll-top-wrapper.show {
+    visibility:visible;
+    cursor:pointer;
+	opacity: 1.0;
+}
+
 /* Carousel ------------------------------------------------------------------*/
 
 .carousel,
@@ -93,7 +170,7 @@ footer.page-footer
 .wizard .nav-tabs
 {
     position: relative;
-    margin: 2rem auto;
+    margin: 1rem auto;
     border-bottom-color: #e0e0e0;
 }
 
@@ -105,14 +182,14 @@ footer.page-footer
 .connecting-line
 {
     height: 3px;
-    background: #e0e0e0;
+    background: #00a5c9;
     position: absolute;
     width: 80%;
     margin: 0 auto;
     left: 0;
     right: 0;
     top: 40%;
-    z-index: -1;
+    z-index: 0;
 }
 
 span.round-tab
@@ -123,7 +200,7 @@ span.round-tab
     display: inline-block;
     border-radius: 100px;
     background: #fff !important;
-    border: 2px solid #263238;
+    border: 2px solid #00a5c9;
     z-index: 2;
     left: 0;
     font-size: 2.5rem;
@@ -131,7 +208,7 @@ span.round-tab
 }
 span.round-tab i
 {
-    color:#00695c !important;
+    color:#00a5c9 !important;
 }
 /********************* Active Tab *********************/
 .wizard a.active span.round-tab

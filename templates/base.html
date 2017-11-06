@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block Title %}{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700&amp;subset=latin-ext" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'css/animate.css' %}"> -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.css' %}">
     <link rel="stylesheet" href="{% static 'datepicker/css/bootstrap-datepicker3.css' %}">
@@ -22,6 +22,10 @@
     {% endblock %}
     <!--  -->
     {% include "includes/footer.html" %}
+    <!-- Scroll To Top Button -->
+    <div class="scroll-top-wrapper ">
+        <i class="fa fa-2x fa-chevron-up"></i>
+    </div>
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/tether.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
@@ -47,7 +51,47 @@
                 }
             }
         });
+
+        $(document).ready(function()
+        {
+            $(function()
+            {
+
+                $(document).on( 'scroll', function()
+                {
+
+                    if ($(window).scrollTop() > 100)
+                    {
+                        $('.scroll-top-wrapper').addClass('show animated bounceIn');
+                    }
+                    else
+                    {
+                        $('.scroll-top-wrapper').removeClass('show animated bounceIn');
+                    }
+                });
+
+                $('.scroll-top-wrapper').on('click', scrollToTop);
+            });
+
+            function scrollToTop()
+            {
+                verticalOffset = typeof(verticalOffset) != 'undefined' ? verticalOffset : 0;
+                element = $('body');
+                offset = element.offset();
+                offsetTop = offset.top;
+                $('html, body').animate({scrollTop: offsetTop}, 500, 'linear');
+            }
+
+        });
     </script>
+    <!-- <script type="text/javascript" src="http://localhost/clickheat/js/clickheat.js"></script>
+    <noscript><p><a href="http://www.dugwood.com/index.html">Heatmap plugin</a></p></noscript>
+    <script type="text/javascript">
+        clickHeatSite = 'localhost:8000';
+        clickHeatGroup = 'http//localhost:8000/works';
+        clickHeatServer = 'http://localhost/clickheat/click.php';
+        initClickHeat();
+    </script> -->
     {% block JavaScript %}
 
     {% endblock %}

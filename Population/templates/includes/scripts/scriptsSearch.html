@@ -42,12 +42,11 @@ $('#search-work').validate({
             {
                 $('#work_name').blur();
                 showResults(data);
-                var btn = `<button type="submit"
-                                    class="btn btn-info btn-lg"
-                                    onclick="searchWork()">
-                                Buscar
-                                <i class="fa fa-search right ml-3"></i>
-                            </button>`;
+                var btn = `<a class="btn btn-info"
+                            onclick="searchWork()">
+                            Buscar
+                            <i class="fa fa-search right ml-3"></i>
+                        </a>`;
                 $("#btn_search").empty();
                 $("#btn_search").html(btn);
             }
@@ -86,7 +85,9 @@ function showResults(datos)
             usability = (elem.Usability ? "Si":"No");
             develop = (elem.Develop ? "Si":"No");
             status = (elem.Status=="T" ? "Terminado":"En Proceso");
-            html += `<div class="dropdown-divider"></div>
+            html += `<div class="dropdown-divider"
+                style="background-color:#b2dfdb !important">
+                </div>
             <div class="row">
                 <div class="col-lg-12">
                     <h5><b>${elem.Name}</b></h5>
@@ -113,16 +114,16 @@ function showResults(datos)
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 offset-lg-6" align="right">
+                <div class="col-lg-3 offset-lg-5" align="right">
                     <button type="button" name="button"
-                            class="btn btn-info btn-sm"
+                            class="btn default-color btn-sm"
                             onclick="editInfo(${elem.Id}, '${elem.Name}', '${elem.Year}', '${elem.Status}', '${elem.Type}', ${elem.Usability}, ${elem.Develop})">
                         Editar Información
                     </button>
                 </div>
-                <div class="col-lg-3" align="right">
+                <div class="col-lg-4" align="right">
                     <button type="button" name="button"
-                            class="btn btn-success btn-sm"
+                            class="btn btn-personalized btn-sm"
                             onclick="charatetization(${elem.Id}, '${elem.Name}', '${elem.Year}', '${elem.Status}', '${elem.Type}', ${elem.Usability}, ${elem.Develop})" ${enable}>
                         Caracterizar Aplicación
                     </button>

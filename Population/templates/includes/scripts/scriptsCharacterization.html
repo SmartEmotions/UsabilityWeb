@@ -14,6 +14,7 @@ function charatetization(id,name,year,status,type,usability,dev)
     de = (dev ? "True":"False");
     ue = (usability ? "True":"False");
     st = (status = 'Terminado'? "T":"P");
+    $('#tab-charac').removeClass('disabled');
     $(window).scrollTop(0);
     $('#workc_id').val(id);
     $('#workc_name').val(name);
@@ -228,11 +229,24 @@ $('#charac_form').validate({
             data: ($("#charac_form").serialize()+'&'+$.param({ 'workc_lafron': ($('#workc_lafron').selectpicker('val')).toString(), 'workc_ffront': ($('#workc_ffront').selectpicker('val')).toString()}))
         }).done(function(datos)
         {
-            cleanFormCharacterization();
+            if (datos == 1)
+            {
+                $(window).scrollTop(0);
+                cleanFormCharacterization();
+                $('#tabs-popu a[href="#characterization"]').addClass('disabled');
+                $('#tabs-popu a[href="#search"]').tab('show');
+            }
         });
     }
 });
 
+function submitCharacterization()
+{
+    if ($('#charac_form').valid())
+    {
+        $('#charac_form').submit();
+    }
+}
 
 function cleanFormCharacterization()
 {

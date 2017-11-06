@@ -1,6 +1,6 @@
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render
-from django.db.models import Sum, Count
+from django.db.models import Sum, Count, F
 from Population.models import Gradeworks, Webaplications
 from Methodologies.models import Methodologies
 from django.http import HttpResponse, JsonResponse
@@ -19,57 +19,64 @@ class WebaplicationsViewSet(viewsets.ModelViewSet):
     @list_route()
     def sgdb(self, request):
         q = self.get_queryset().values('app_nsgdb'
-                                       ).annotate(Total=Count('app_nsgdb')
-                                       ).order_by('-Total')
+                   ).annotate(Total=Count('app_nsgdb')
+                   ).order_by('-Total')
         return Response(list(q))
 
     @list_route()
     def lback(self, request):
         q = self.get_queryset().values('app_lback'
-                                       ).annotate(Total=Count('app_lback')
-                                       ).order_by('-Total')
+                   ).annotate(Total=Count('app_lback')
+                   ).order_by('-Total')
         return Response(list(q))
 
     @list_route()
     def bfram(self, request):
         q = self.get_queryset().values('app_bfram'
-                                       ).annotate(Total=Count('app_bfram')
-                                       ).order_by('-Total')
+                   ).annotate(Total=Count('app_bfram')
+                   ).order_by('-Total')
         return Response(list(q))
 
     @list_route()
     def appse(self, request):
         q = self.get_queryset().values('app_appse'
-                                       ).annotate(Total=Count('app_appse')
-                                       ).order_by('-Total')
+                   ).annotate(Total=Count('app_appse')
+                   ).order_by('-Total')
         return Response(list(q))
 
     @list_route()
     def lfron(self, request):
         q = self.get_queryset().values('app_lfron'
-                                       ).annotate(Total=Count('app_lfron')
-                                       ).order_by('-Total')[0:8]
+                   ).annotate(Total=Count('app_lfron')
+                   ).order_by('-Total')[0:8]
         return Response(list(q))
 
     @list_route()
     def ffram(self, request):
         q = self.get_queryset().values('app_ffram'
-                                       ).annotate(Total=Count('app_ffram')
-                                       ).order_by('-Total')[0:8]
+                   ).annotate(Total=Count('app_ffram')
+                   ).order_by('-Total')[0:8]
         return Response(list(q))
 
     @list_route()
     def entit(self, request):
         q = self.get_queryset().values('app_entit'
-                                       ).annotate(Total=Count('app_entit')
-                                       ).order_by('-Total')[0:8]
+                   ).annotate(Total=Count('app_entit')
+                   ).order_by('-Total')[0:8]
         return Response(list(q))
 
     @list_route()
     def secto(self, request):
         q = self.get_queryset().values('app_secto'
-                                       ).annotate(Total=Count('app_secto')
-                                       ).order_by('-Total')[0:8]
+                   ).annotate(Total=Count('app_secto')
+                   ).order_by('-Total')[0:8]
+        return Response(list(q))
+
+    @list_route()
+    def membe(self, request):
+        q = self.get_queryset().values('app_cmenb'
+                   ).annotate(Total=Count('app_cmenb')
+                   ).order_by('-Total')[0:8]
         return Response(list(q))
 
 
@@ -80,24 +87,45 @@ class GradeworksViewSet(viewsets.ModelViewSet):
     queryset = Gradeworks.objects.all()
     serializer_class = GradeworksSerializer
 
+    @list_route()
+    def type(self, request):
+        q = self.get_queryset().values('work_type'
+                ).annotate(Total=Count('work_type')
+                ).order_by('-Total')[0:12]
+        return Response(list(q))
+
+    @list_route()
+    def ueva(self, request):
+        q = self.get_queryset().filter(work_type=('Aplicación Web'))
+        yes = q.filter(work_uevalu=True).count()
+        no = q.filter(work_uevalu=False).count()
+        return Response(list([{'work_uevalu':'Si','Total':yes},
+                              {'work_uevalu':'No','Total':no}]))
+
+    @list_route()
+    def wapp(self, request):
+        nwapp = self.get_queryset(
+        ).filter(work_type__icontains='Aplicación Web'
+        ).annotate(Year=F('work_year')
+        ).values('Year'
+        ).annotate(Total=Count('work_type')).order_by('Year')
+        naudi = self.get_queryset(
+        ).filter(work_type='Auditoria'
+        ).annotate(Year=F('work_year')
+        ).values('Year'
+        ).annotate(Total=Count('work_type')).order_by('Year')
+        nmovi = self.get_queryset(
+        ).filter(work_type__icontains='Aplicación Móvil'
+        ).annotate(Year=F('work_year')
+        ).values('Year'
+        ).annotate(Total=Count('work_type')).order_by('Year')
+        return Response(list([{'Type':'Aplicación Web','Years':nwapp},
+                              {'Type':'Auditoria','Years':naudi},
+                              {'Type':'Aplicación Móvil','Years':nmovi}]))
 
 @csrf_protect
 def getWorksTypes(request):
-    workstypes = types()
-    uevaluation = usability()
-    return render(request, 'populationInit.html', {'Works':workstypes,'Usability':uevaluation})
-
-def types():
-    works = Gradeworks.objects.values('work_type'
-            ).annotate(Total=Count('work_type')
-            ).order_by('-Total')[0:7]
-    return works
-
-def usability():
-    wapps = Gradeworks.objects.filter(work_type__icontains=('Aplicación Web'))
-    yes = wapps.filter(work_uevalu=True).count()
-    no = wapps.filter(work_uevalu=False).count()
-    return {'Si':yes, 'No':no}
+    return render(request, 'populationInit.html')
 
 
 @csrf_protect

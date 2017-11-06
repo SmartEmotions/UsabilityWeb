@@ -8,6 +8,150 @@ var data_lfron = false;
 var data_ffram = false;
 var data_secto = false;
 var data_entit = false;
+var data_cmemb = false;
+
+var work_types = false;
+var work_ueval = false;
+
+$(window).scroll(function()
+{
+    var hT = $('#graph_sgdb').offset().top;
+    var hH = $('#graph_sgdb').outerHeight();
+
+    var lT = $('#graph_lback').offset().top;
+    var lH = $('#graph_lback').outerHeight();
+
+    var sT = $('#graph_appse').offset().top;
+    var sH = $('#graph_appse').outerHeight();
+
+    var fbT = $('#graph_fback').offset().top;
+    var fbH = $('#graph_fback').outerHeight();
+
+    var lfT = $('#graph_lfron').offset().top;
+    var lfH = $('#graph_lfron').outerHeight();
+
+    var ffT = $('#graph_ffram').offset().top;
+    var ffH = $('#graph_ffram').outerHeight();
+
+    var scT = $('#graph_secto').offset().top;
+    var scH = $('#graph_secto').outerHeight();
+
+    var enT = $('#graph_entit').offset().top;
+    var enH = $('#graph_entit').outerHeight();
+
+    var enT = $('#graph_entit').offset().top;
+    var enH = $('#graph_entit').outerHeight();
+
+    var cmT = $('#graph_cmemb').offset().top;
+    var cmH = $('#graph_cmemb').outerHeight();
+
+
+    var tyT = $('#graph_types').offset().top;
+    var tyH = $('#graph_types').outerHeight();
+    var ueT = $('#works_ueval').offset().top;
+    var ueH = $('#works_ueval').outerHeight();
+
+    var wH = $(window).height();
+    var wS = $(this).scrollTop();
+    data_sgdb = (data_sgdb)?true:analizeScroll(wS,wH,hT,hH,'app_nsgdb');
+    data_lback = (data_lback)?true:analizeScroll(wS,wH,lT,lH,'app_lback');
+    data_appse = (data_appse)?true:analizeScroll(wS,wH,sT,sH,'app_appse');
+    data_bfram = (data_bfram)?true:analizeScroll(wS,wH,fbT,fbH,'app_bfram');
+    data_lfron = (data_lfron)?true:analizeScroll(wS,wH,lfT,lfH,'app_lfron');
+    data_ffram = (data_ffram)?true:analizeScroll(wS,wH,ffT,ffH,'app_ffram');
+    data_secto = (data_secto)?true:analizeScroll(wS,wH,scT,scH,'app_secto');
+    data_entit = (data_entit)?true:analizeScroll(wS,wH,enT,enH,'app_entit');
+    data_cmemb = (data_cmemb)?true:analizeScroll(wS,wH,cmT,cmH,'app_cmenb');
+
+    work_types = (work_types)?true:analizeScroll(wS,wH,tyT,tyH,'work_type');
+    work_ueval = (work_ueval)?true:analizeScroll(wS,wH,ueT,ueH,'work_ueva');
+});
+
+function getdata(characteristic)
+{
+    var [canvas,url, height]=(characteristic=='app_nsgdb')?['worksc-sgdb',"{% url 'web-apps-sgdb' %}", 25]:
+               (characteristic=='app_lback')?['worksc-lback',"{% url 'web-apps-lback' %}", 35]:
+               (characteristic=='app_appse')?['worksc-appse',"{% url 'web-apps-appse' %}", 30]:
+               (characteristic=='app_bfram')?['worksc-fback',"{% url 'web-apps-bfram' %}", 40]:
+               (characteristic=='app_lfron')?['worksc-lfron',"{% url 'web-apps-lfron' %}", 20]:
+               (characteristic=='app_ffram')?['worksc-ffram',"{% url 'web-apps-ffram' %}", 40]:
+               (characteristic=='app_secto')?['worksc-secto',"{% url 'web-apps-secto' %}", 30]:
+               (characteristic=='app_entit')?['worksc-entit',"{% url 'web-apps-entit' %}", 60]:
+               (characteristic=='app_cmenb')?['worksc-cmemb',"{% url 'web-apps-membe' %}", 40]:
+
+               (characteristic=='work_type')?['works_types',"{% url 'works-type' %}", 80]:
+               (characteristic=='work_ueva')?['works_ueval',"{% url 'works-ueva' %}", 80]:['', '', ''];
+    $.ajax({
+        url: url,
+        type: 'GET',
+        data: {format:"json"},
+        success:function(datos)
+        {
+            drawDataCharacteristic(datos, characteristic, canvas, height);
+            return true;
+        }
+    });
+}
+
+function drawDataCharacteristic(info, characteristic, canvas, height)
+{
+    // var bgcl = ["rgba(0, 77, 64,0.4)",
+    //             "rgba(0, 105, 92,0.4)",
+    //             "rgba(0, 96, 100,0.4)",
+    //             "rgba(0, 131, 143,0.4)",
+    //             "rgba(0, 151, 167,0.4)",
+    //             "rgba(0, 172, 193,0.4)",
+    //             "rgba(0, 188, 212,0.4)",
+    //             "rgba(38, 198, 218,0.4)",
+    //             "rgba(77, 208, 225,0.4)",
+    //             "rgba(128, 222, 234,0.4)"];
+    var bgcl = ["rgba(0, 77, 64,0.4)",
+                "rgba(38, 166, 154,0.4)",
+                "rgba(128, 203, 196,0.4)",
+                "rgba(128, 222, 234,0.4)",
+                "rgba(0, 188, 212,0.4)",
+                "rgba(0, 96, 100,0.4)",
+                "rgba(2, 136, 209,0.4)",
+                "rgba(79, 195, 247,0.4)",
+                "rgba(187, 222, 251,0.4)",
+                "rgba(13, 71, 161,0.4)"];
+    var canv = canvas;
+    var labs = [];
+    var data = [];
+    info.forEach(elem => {
+        (characteristic == 'app_nsgdb'? labs.push(elem.app_nsgdb) :
+         characteristic == 'app_lback'? labs.push(elem.app_lback) :
+         characteristic == 'app_appse'? labs.push(elem.app_appse) :
+         characteristic == 'app_bfram'? labs.push(elem.app_bfram) :
+         characteristic == 'app_lfron'? labs.push(elem.app_lfron) :
+         characteristic == 'app_ffram'? labs.push(elem.app_ffram) :
+         characteristic == 'app_secto'? labs.push(elem.app_secto) :
+         characteristic == 'app_entit'? labs.push(elem.app_entit) :
+         characteristic == 'app_cmenb'? labs.push(elem.app_cmenb) :
+
+         characteristic == 'work_type'? labs.push(elem.work_type) :
+         characteristic == 'work_ueva'? labs.push(elem.work_uevalu) : false);
+        data.push(elem.Total);
+    });
+    var dalb = "Cantidad";
+    var perc = true;
+    var width = 0.8;
+    drawBar(canv, labs, data, dalb, bgcl, perc, width, height);
+}
+
+function analizeScroll(wS, wH, hT, hH, v)
+{
+    if (wS > (hT+hH-wH) && (hT > wS) && (wS+wH > hT+hH))
+    {
+        getdata(v);
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 //On Touch Move Mobile Version *************************************************
 $('#graph_sgdb').on({
     'touchmove': function(e)
@@ -89,106 +233,4 @@ $('#graph_entit').on({
         }
     }
 });
-$(window).scroll(function()
-{
-    var hT = $('#graph_sgdb').offset().top;
-    var hH = $('#graph_sgdb').outerHeight();
-
-    var lT = $('#graph_lback').offset().top;
-    var lH = $('#graph_lback').outerHeight();
-
-    var sT = $('#graph_appse').offset().top;
-    var sH = $('#graph_appse').outerHeight();
-
-    var fbT = $('#graph_fback').offset().top;
-    var fbH = $('#graph_fback').outerHeight();
-
-    var lfT = $('#graph_lfron').offset().top;
-    var lfH = $('#graph_lfron').outerHeight();
-
-    var ffT = $('#graph_ffram').offset().top;
-    var ffH = $('#graph_ffram').outerHeight();
-
-    var scT = $('#graph_secto').offset().top;
-    var scH = $('#graph_secto').outerHeight();
-
-    var enT = $('#graph_entit').offset().top;
-    var enH = $('#graph_entit').outerHeight();
-    var wH = $(window).height();
-    var wS = $(this).scrollTop();
-    data_sgdb = (data_sgdb)?true:analizeScroll(wS,wH,hT,hH,'app_nsgdb');
-    data_lback = (data_lback)?true:analizeScroll(wS,wH,lT,lH,'app_lback');
-    data_appse = (data_appse)?true:analizeScroll(wS,wH,sT,sH,'app_appse');
-    data_bfram = (data_bfram)?true:analizeScroll(wS,wH,fbT,fbH,'app_bfram');
-    data_lfron = (data_lfron)?true:analizeScroll(wS,wH,lfT,lfH,'app_lfron');
-    data_ffram = (data_ffram)?true:analizeScroll(wS,wH,ffT,ffH,'app_ffram');
-    data_secto = (data_secto)?true:analizeScroll(wS,wH,scT,scH,'app_secto');
-    data_entit = (data_entit)?true:analizeScroll(wS,wH,enT,enH,'app_entit');
-});
-
-function getdata(characteristic)
-{
-    var [canvas,url]=(characteristic=='app_nsgdb')?['worksc-sgdb',"{% url 'web-apps-sgdb' %}"]:
-               (characteristic=='app_lback')?['worksc-lback',"{% url 'web-apps-lback' %}"]:
-               (characteristic=='app_appse')?['worksc-appse',"{% url 'web-apps-appse' %}"]:
-               (characteristic=='app_bfram')?['worksc-fback',"{% url 'web-apps-bfram' %}"]:
-               (characteristic=='app_lfron')?['worksc-lfron',"{% url 'web-apps-lfron' %}"]:
-               (characteristic=='app_ffram')?['worksc-ffram',"{% url 'web-apps-ffram' %}"]:
-               (characteristic=='app_secto')?['worksc-secto',"{% url 'web-apps-secto' %}"]:
-               (characteristic=='app_entit')?['worksc-entit',"{% url 'web-apps-entit' %}"]:
-               ('', '');
-    $.ajax({
-        url: url,
-        type: 'GET',
-        data: {format:"json"},
-        success:function(datos)
-        {
-            drawDataCharacteristic(datos, characteristic, canvas);
-            return true;
-        }
-    });
-}
-
-function drawDataCharacteristic(info, characteristic, canvas)
-{
-    var canv = canvas;
-    var labs = [];
-    var data = [];
-    info.forEach(elem => {
-        (characteristic == 'app_nsgdb'? labs.push(elem.app_nsgdb) :
-         characteristic == 'app_lback'? labs.push(elem.app_lback) :
-         characteristic == 'app_appse'? labs.push(elem.app_appse) :
-         characteristic == 'app_bfram'? labs.push(elem.app_bfram) :
-         characteristic == 'app_lfron'? labs.push(elem.app_lfron) :
-         characteristic == 'app_ffram'? labs.push(elem.app_ffram) :
-         characteristic == 'app_secto'? labs.push(elem.app_secto) :
-         characteristic == 'app_entit'? labs.push(elem.app_entit) : false);
-        data.push(elem.Total);
-    });
-
-    var dalb = "Cantidad";
-    var bgcl = ["rgba(0,255,100,0.4)",
-                "rgba(239, 127, 26,0.4)",
-                "rgba(0,255,0,0.4)",
-                "rgba(0, 128, 128,0.4)",
-                "rgba(139, 127, 26,0.4)",
-                "rgba(0,200,0,0.4)",
-                "rgba(50, 128, 128,0.4)"];
-    var perc = true;
-    var width = 0.8;
-    drawBar(canv, labs, data, dalb, bgcl, perc, width, 40);
-}
-
-function analizeScroll(wS, wH, hT, hH, v)
-{
-    if (wS > (hT+hH-wH) && (hT > wS) && (wS+wH > hT+hH))
-    {
-        getdata(v);
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
 </script>

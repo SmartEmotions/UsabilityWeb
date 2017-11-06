@@ -61,10 +61,21 @@ function drawBar(canvas, labels, data, datal, bg_colrs, prcntags, width, maxheig
                     {
                         label: datal,
                         backgroundColor: bg_colrs,
-                        data: data
+                        data: data,
+                        borderColor:'#00a5c9',
+                        borderWidth:1,
+                        borderStyle:'dot'
                     }
                 ]
             }
         });
+        Chart.helpers.each(chart.getDatasetMeta(0).data, function(rectangle, index)
+        {
+            rectangle.draw = function()
+            {
+                chart.chart.ctx.setLineDash([10, 1]);
+                Chart.elements.Rectangle.prototype.draw.apply(this, arguments);
+            }
+        }, null);
     })();
 }
