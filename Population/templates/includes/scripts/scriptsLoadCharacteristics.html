@@ -140,11 +140,12 @@ function getdata(characteristic)
     $.ajax({
         url: url,
         type: 'GET',
-        data: {format:"json"}
-    }).done(function(datos)
-    {
-        drawDataCharacteristic(datos, characteristic, canvas);
-        return true;
+        data: {format:"json"},
+        success:function(datos)
+        {
+            drawDataCharacteristic(datos, characteristic, canvas);
+            return true;
+        }
     });
 }
 
@@ -175,7 +176,7 @@ function drawDataCharacteristic(info, characteristic, canvas)
                 "rgba(50, 128, 128,0.4)"];
     var perc = true;
     var width = 0.8;
-    drawBar(canv, labs, data, dalb, bgcl, perc, width, 30);
+    drawBar(canv, labs, data, dalb, bgcl, perc, width, 40);
 }
 
 function analizeScroll(wS, wH, hT, hH, v)
