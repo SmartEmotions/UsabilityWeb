@@ -12,6 +12,9 @@ var data_cmemb = false;
 
 var work_types = false;
 var work_ueval = false;
+var work_devel = false;
+
+var year_types = false;
 
 $(window).scroll(function()
 {
@@ -50,6 +53,11 @@ $(window).scroll(function()
     var tyH = $('#graph_types').outerHeight();
     var ueT = $('#works_ueval').offset().top;
     var ueH = $('#works_ueval').outerHeight();
+    var deT = $('#graph_devel').offset().top;
+    var deH = $('#graph_devel').outerHeight();
+
+    var ytT = $('#graph_year_type').offset().top;
+    var ytH = $('#graph_year_type').outerHeight();
 
     var wH = $(window).height();
     var wS = $(this).scrollTop();
@@ -65,6 +73,9 @@ $(window).scroll(function()
 
     work_types = (work_types)?true:analizeScroll(wS,wH,tyT,tyH,'work_type');
     work_ueval = (work_ueval)?true:analizeScroll(wS,wH,ueT,ueH,'work_ueva');
+    work_devel = (work_devel)?true:analizeScroll(wS,wH,deT,deH,'work_deve');
+
+    year_types = (year_types)?true:analizeScroll(wS,wH,ytT,ytH,'work_year_type');
 });
 
 function getdata(characteristic)
@@ -80,6 +91,7 @@ function getdata(characteristic)
                (characteristic=='app_cmenb')?['worksc-cmemb',"{% url 'web-apps-membe' %}", 40]:
 
                (characteristic=='work_type')?['works_types',"{% url 'works-type' %}", 80]:
+               (characteristic=='work_deve')?['works_devel',"{% url 'works-deve' %}", 100]:
                (characteristic=='work_ueva')?['works_ueval',"{% url 'works-ueva' %}", 80]:['', '', ''];
     $.ajax({
         url: url,
@@ -93,18 +105,25 @@ function getdata(characteristic)
     });
 }
 
+function getDataLine(characteristic)
+{
+    var [canvas,url, height]=(characteristic=='work_year_type')?["works_year_types",
+                                                                 "{% url 'works-year-types' %}",
+                                                                 20]:['', '', ''];
+    $.ajax({
+        url: url,
+        type: 'GET',
+        data: {format:"json"},
+        success:function(datos)
+        {
+            drawTimeLine(datos, characteristic, canvas, height);
+            return true;
+        }
+    });
+}
+
 function drawDataCharacteristic(info, characteristic, canvas, height)
 {
-    // var bgcl = ["rgba(0, 77, 64,0.4)",
-    //             "rgba(0, 105, 92,0.4)",
-    //             "rgba(0, 96, 100,0.4)",
-    //             "rgba(0, 131, 143,0.4)",
-    //             "rgba(0, 151, 167,0.4)",
-    //             "rgba(0, 172, 193,0.4)",
-    //             "rgba(0, 188, 212,0.4)",
-    //             "rgba(38, 198, 218,0.4)",
-    //             "rgba(77, 208, 225,0.4)",
-    //             "rgba(128, 222, 234,0.4)"];
     var bgcl = ["rgba(0, 77, 64,0.4)",
                 "rgba(38, 166, 154,0.4)",
                 "rgba(128, 203, 196,0.4)",
@@ -130,6 +149,7 @@ function drawDataCharacteristic(info, characteristic, canvas, height)
          characteristic == 'app_cmenb'? labs.push(elem.app_cmenb) :
 
          characteristic == 'work_type'? labs.push(elem.work_type) :
+         characteristic == 'work_deve'? labs.push(elem.work_develo) :
          characteristic == 'work_ueva'? labs.push(elem.work_uevalu) : false);
         data.push(elem.Total);
     });
@@ -139,11 +159,41 @@ function drawDataCharacteristic(info, characteristic, canvas, height)
     drawBar(canv, labs, data, dalb, bgcl, perc, width, height);
 }
 
+function drawTimeLine(info, characteristic, canvas, height)
+{
+    var bgcl = ["rgba(0, 77, 64,0.8)",
+                "rgba(38, 166, 154,0.8)",
+                "rgba(128, 203, 196,0.8)",
+                "rgba(128, 222, 234,0.8)",
+                "rgba(0, 188, 212,0.8)"];
+    var fill = ["rgba(0, 77, 64,0.2)",
+                "rgba(38, 166, 154,0.3)",
+                "rgba(128, 203, 196,1)",
+                "rgba(128, 222, 234,0.4)",
+                "rgba(0, 188, 212,0.4)"];
+
+    var canv = canvas;
+    var labl = []
+    info[0].Years.forEach(elem =>
+    {
+        labl.push(elem.Year);
+    });
+
+    drawLines(canv, info, labl, bgcl, fill);
+}
+
 function analizeScroll(wS, wH, hT, hH, v)
 {
     if (wS > (hT+hH-wH) && (hT > wS) && (wS+wH > hT+hH))
     {
-        getdata(v);
+        if (v != 'work_year_type')
+        {
+            getdata(v);
+        }
+        else
+        {
+            getDataLine(v);
+        }
         return true;
     }
     else

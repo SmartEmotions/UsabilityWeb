@@ -99,11 +99,19 @@ class GradeworksViewSet(viewsets.ModelViewSet):
         q = self.get_queryset().filter(work_type=('Aplicación Web'))
         yes = q.filter(work_uevalu=True).count()
         no = q.filter(work_uevalu=False).count()
-        return Response(list([{'work_uevalu':'Si','Total':yes},
-                              {'work_uevalu':'No','Total':no}]))
+        return Response(list([{'work_uevalu':'No','Total':no},
+                              {'work_uevalu':'Si','Total':yes}]))
 
     @list_route()
-    def wapp(self, request):
+    def deve(self, request):
+        q = self.get_queryset()
+        yes = q.filter(work_develo=True).count()
+        no = q.filter(work_develo=False).count()
+        return Response(list([{'work_develo':'Si','Total':yes},
+                              {'work_develo':'No','Total':no}]))
+
+    @list_route()
+    def year_types(self, request):
         nwapp = self.get_queryset(
         ).filter(work_type__icontains='Aplicación Web'
         ).annotate(Year=F('work_year')
