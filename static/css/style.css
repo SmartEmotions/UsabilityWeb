@@ -11,7 +11,10 @@ body,
 
 button, input, optgroup, select, textarea{
     font-family: 'Open Sans Condensed' !important;
-    font-size: 17px;
+}
+
+input{
+    font-size: 1.3rem !important;
 }
 
 b{
@@ -35,13 +38,42 @@ a.navbar-brand
 
 .navbar.scrolling-navbar
 {
-    padding-top: 8px;
-    padding-bottom: 8px;
+    padding-top: 2px;
+    padding-bottom: 2px;
 }
 
 .navbar-nav .nav-item.active > .nav-link
 {
-    background-color: #3F729B !important;
+    background-color: #2BCCFA !important;
+    border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+    padding-left:  2rem;
+    padding-right: 2rem;
+    color: #2E2E2E !important;
+}
+
+.navbar-nav .nav-item:hover > .nav-link
+{
+    background-color: #2BDCFA !important;
+    border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	border-bottom-left-radius: 5px;
+    padding-left:  2rem;
+    padding-right: 2rem;
+    color: #4B515D !important;
+}
+
+.navbar-nav .nav-item.active:last-child:before,
+.navbar-nav .nav-item.active:last-child:after {
+  content: '';
+  display: block;
+  position: absolute;
+  pointer-events: none;
+  -webkit-transition: left 1.3s ease;
+  transition: left 1.3s ease;
 }
 
 .nav-link
@@ -87,6 +119,11 @@ button.btn-lg{
 button.btn-personalized{
     background-color: #316f68;
 }
+
+.btn.btn-sm
+{
+    font-size: 0.8rem;
+}
 /* Error Div   ---------------------------------------------------------------*/
 
 div.error
@@ -103,7 +140,8 @@ div.error
     transform: translateY(0%);
 }
 /* Scroll To Top Button ------------------------------------------------------*/
-.scroll-top-wrapper {
+.scroll-top-wrapper
+{
     position: fixed;
     opacity: 0;
     visibility: hidden;
@@ -132,7 +170,8 @@ div.error
 {
 	background-color: #2BBBAD;
 }
-.scroll-top-wrapper.show {
+.scroll-top-wrapper.show
+{
     visibility:visible;
     cursor:pointer;
 	opacity: 1.0;
@@ -175,7 +214,6 @@ div.error
 /**************************************************************************/
 .wizard
 {
-    margin: 20px auto;
     background: transparent;
 }
 
@@ -196,27 +234,28 @@ div.error
     height: 3px;
     background: #00a5c9;
     position: absolute;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     left: 0;
     right: 0;
-    top: 40%;
+    top: 50%;
     z-index: 0;
 }
 
 span.round-tab
 {
-    width: 90px;
-    height: 90px;
-    line-height: 90px;
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
     display: inline-block;
     border-radius: 100px;
-    background: #fff !important;
+    background: #fff;
     border: 2px solid #00a5c9;
     z-index: 2;
     left: 0;
     font-size: 2.5rem;
     margin-bottom: 1rem;
+    margin-top: 1rem;
 }
 span.round-tab i
 {
@@ -225,23 +264,26 @@ span.round-tab i
 /********************* Active Tab *********************/
 .wizard a.active span.round-tab
 {
-    background: #fff;
+    background: #00a5c9;
     border: 2px solid #2BBBAD;
 }
 .wizard a.active span.round-tab i
 {
-    color: #2BBBAD !important;
+    color: #FFF !important;
 }
 /****************** Hover Round Tab *******************/
 span.round-tab:hover
 {
-    color: #2BBBAD;
     border: 2px solid #2BBBAD;
+    box-shadow: 0 0 15px #2BBBAD;
+    transition: all 0.4s ease-in-out;
+    transform: rotateY(360deg);
+    background: #00a5c9;
 }
 
 span.round-tab:hover > i
 {
-    color: #2BBBAD !important;
+    color: #FFF !important;
 }
 
 .wizard .nav-tabs > li
@@ -266,11 +308,11 @@ span.round-tab:hover > i
 {
     content: " ";
     position: absolute;
-    left: 46%;
+    left: 47%;
     opacity: 1;
     margin: 0 auto;
     bottom: 0px;
-    border: 10px solid transparent;
+    border: 0.6rem solid transparent;
     border-bottom-color: #2BBBAD;
 }
 
@@ -319,11 +361,11 @@ span.round-tab:hover > i
         line-height: 50px;
     }
 
-    .wizard li.active:after
+    .wizard a.active:after
     {
         content: " ";
         position: absolute;
-        left: 35%;
+        left: 35% !important;
     }
 }
 
