@@ -6,7 +6,7 @@ body,
 {
     height: 100%;
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 17px;
+    font-size: 1.0rem;
 }
 
 button, input, optgroup, select, textarea{
@@ -27,11 +27,23 @@ a{
     background-color: #00a5c9;
 }
 
-/*.navbar.scrolling-navbar
+nav.navbar ul.navbar-nav a.nav-link,
+a.navbar-brand
 {
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
-}*/
+    font-size: 1.5rem !important;
+}
+
+.navbar.scrolling-navbar
+{
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.navbar-nav .nav-item.active > .nav-link
+{
+    background-color: #3F729B !important;
+}
+
 .nav-link
 {
     padding: 0;

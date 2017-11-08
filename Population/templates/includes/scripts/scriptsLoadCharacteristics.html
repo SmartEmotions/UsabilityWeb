@@ -91,7 +91,7 @@ function getdata(characteristic)
                (characteristic=='app_cmenb')?['worksc-cmemb',"{% url 'web-apps-membe' %}", 40]:
 
                (characteristic=='work_type')?['works_types',"{% url 'works-type' %}", 80]:
-               (characteristic=='work_deve')?['works_devel',"{% url 'works-deve' %}", 100]:
+               (characteristic=='work_deve')?['works_devel',"{% url 'works-deve' %}", 120]:
                (characteristic=='work_ueva')?['works_ueval',"{% url 'works-ueva' %}", 80]:['', '', ''];
     $.ajax({
         url: url,

@@ -81,7 +81,7 @@ function showResults(datos)
     {
         datos.Works.forEach(elem =>
         {
-            enable = ((elem.Type=="Aplicación Web" || elem.Type=="Aplicación Web y Móvil") ? "":"disabled");
+            enable = ((elem.Type=="Aplicación Web" || elem.Type=="Aplicación Web,Aplicación Móvil") ? "":"disabled");
             usability = (elem.Usability ? "Si":"No");
             develop = (elem.Develop ? "Si":"No");
             status = (elem.Status=="T" ? "Terminado":"En Proceso");
