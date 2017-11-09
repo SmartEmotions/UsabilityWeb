@@ -115,7 +115,7 @@ function getDataLine(characteristic)
         data: {format:"json"},
         success:function(datos)
         {
-            drawTimeLine(datos, characteristic, canvas, height);
+            drawTimeLine(datos, characteristic, canvas);
             return true;
         }
     });

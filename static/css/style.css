@@ -36,50 +36,58 @@ a.navbar-brand
     font-size: 1.5rem !important;
 }
 
+.navbar-toggleable-md .navbar-collapse
+{
+    height: 3rem;
+}
+nav.navbar div.container
+{
+    margin-right: inherit;
+}
 .navbar.scrolling-navbar
 {
-    padding-top: 2px;
-    padding-bottom: 2px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+.navbar-nav .nav-item
+{
+    vertical-align: bottom !important;
+}
+
+.navbar-nav .nav-item .nav-link
+{
+    height: 100%;
+    padding-left:  1rem;
+    padding-right: 1rem;
+    padding-top: 0.1rem;
+    border-top: 0.3rem solid #00a5c9;
+    margin-bottom: auto;
 }
 
 .navbar-nav .nav-item.active > .nav-link
 {
     background-color: #2BCCFA !important;
-    border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
     padding-left:  2rem;
     padding-right: 2rem;
-    color: #2E2E2E !important;
+    border-top-color: #00695c !important;
+    /*height: 4rem;*/
+    /*border-bottom-right-radius: 1.5rem;
+	border-bottom-left-radius: 1.5rem;*/
 }
+
+/* Radicado Claro 624565029*/
 
 .navbar-nav .nav-item:hover > .nav-link
 {
     background-color: #2BDCFA !important;
-    border-top-left-radius: 5px;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-	border-bottom-left-radius: 5px;
+    box-shadow: 0 0 0.2rem #2BCCFA;
     padding-left:  2rem;
     padding-right: 2rem;
     color: #4B515D !important;
+    border-top-color: #00695c !important;
 }
 
-.navbar-nav .nav-item.active:last-child:before,
-.navbar-nav .nav-item.active:last-child:after {
-  content: '';
-  display: block;
-  position: absolute;
-  pointer-events: none;
-  -webkit-transition: left 1.3s ease;
-  transition: left 1.3s ease;
-}
-
-.nav-link
-{
-    padding: 0;
-}
 footer.page-footer
 {
     background-color: #ffffff;
@@ -101,6 +109,15 @@ footer.page-footer a
     .objects-init
     {
         margin-top: 3rem;
+    }
+    .navbar-toggleable-md .navbar-collapse
+    {
+        height: auto;
+    }
+    .navbar-nav .nav-item .nav-link
+    {
+        padding-top: 0.5rem;
+        border-top: 0;
     }
 }
 @media only screen and (max-height: 480px)
@@ -284,6 +301,11 @@ span.round-tab:hover
 span.round-tab:hover > i
 {
     color: #FFF !important;
+}
+
+ul.nav-tabs li.nav-item a.disabled
+{
+    pointer-events: none;
 }
 
 .wizard .nav-tabs > li
