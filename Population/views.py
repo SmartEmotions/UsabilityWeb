@@ -226,7 +226,7 @@ def charWork(request):
         app_bfram = request.POST['workc_framew'],
         app_ffram = request.POST['workc_ffront'],
         app_dupda = request.POST['workc_dscupd'],
-        app_updat = request.POST['workc_update'],
+        app_updat = (request.POST['workc_update']).replace('.','.\n'),
         app_appse = request.POST['workc_appser'],
         app_tcost = request.POST['workc_timede'] + ' ' + request.POST['work_tcos'],
         app_qualf = 0)

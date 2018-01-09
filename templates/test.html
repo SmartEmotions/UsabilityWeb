@@ -7,115 +7,105 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>{% block Title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.steps.css' %}">
     <link rel="stylesheet" href="{% static 'css/mdb.css' %}">
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.css' %}">
-    <style media="screen">
-
-    </style>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <section class="text-center">
-                    <div class="wizard">
-                        <div class="wizard-inner">
-                            <div class="connecting-line"></div>
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li class="nav-item">
-                                    <a href="#step1"
-                                       class="active"
-                                       data-toggle="tab" aria-controls="step1"
-                                       role="tab"
-                                       title="Step 1">
-                                        <span class="round-tab">
-                                            <i class="fa fa-folder-open"></i>
-                                        </span>
-                                    </a>
-                                </li>
+    <div id="smartwizard">
+    <ul>
+        <li><a href="#step-1">Step Title<br /><small>Step description</small></a></li>
+        <li><a href="#step-2">Step Title<br /><small>Step description</small></a></li>
+        <li><a href="#step-3">Step Title<br /><small>Step description</small></a></li>
+        <li><a href="#step-4">Step Title<br /><small>Step description</small></a></li>
+    </ul>
 
-                                <li class="nav-item">
-                                    <a href="#step2"
-                                       data-toggle="tab" aria-controls="step2"
-                                       role="tab"
-                                       title="Step 2">
-                                        <span class="round-tab">
-                                            <i class="fa fa-pencil"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#step3"
-                                       data-toggle="tab" aria-controls="step3"
-                                       role="tab"
-                                       title="Step 3">
-                                        <span class="round-tab">
-                                            <i class="fa fa-image"></i>
-                                        </span>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="#complete"
-                                       data-toggle="tab" aria-controls="complete"
-                                       role="tab"
-                                       title="Complete">
-                                        <span class="round-tab">
-                                            <i class="fa fa-check"></i>
-                                        </span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="tab-content">
-                            <div class="tab-pane active"
-                                 role="tabpanel"
-                                 id="step1">
-                                <h3>Step 1</h3>
-                                <p>This is step 1</p>
-                                <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                                </ul>
-                            </div>
-                            <div class="tab-pane"
-                                 role="tabpanel"
-                                 id="step2">
-                                <h3>Step 2</h3>
-                                <p>This is step 2</p>
-                                <ul class="list-inline pull-right">
-                                    <li><button type="button" class="btn btn-default prev-step">Previous</button></li>
-                                    <li><button type="button" class="btn btn-primary next-step">Save and continue</button></li>
-                                </ul>
-                            </div>
-                            <div class="tab-pane"
-                                 role="tabpanel"
-                                 id="step3">
-                                <h3>Step 3</h3>
-
-                            </div>
-                            <div class="tab-pane"
-                                 role="tabpanel"
-                                 id="complete">
-                                <h3>Complete</h3>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </section>
-            </div>
+    <div>
+        <div id="step-1" class="">
+            Step Content
+        </div>
+        <div id="step-2" class="">
+            Step Content
+        </div>
+        <div id="step-3" class="">
+            Step Content
+        </div>
+        <div id="step-4" class="">
+            Step Content
         </div>
     </div>
+</div>
 
     <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/tether.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/mdb.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.steps.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.validate.js' %}"></script>
+    <script>
 
-    <script type="text/javascript">
+    var form = $("#example-advanced-form");
+
+    form.steps({
+        headerTag: "h3",
+        bodyTag: "fieldset",
+        cssClass: "tabcontrol",
+        transitionEffect: "slideLeft",
+        onStepChanging: function (event, currentIndex, newIndex)
+        {
+            // Allways allow previous action even if the current form is not valid!
+            if (currentIndex > newIndex)
+            {
+                return true;
+            }
+            // Forbid next action on "Warning" step if the user is to young
+            if (newIndex === 3 && Number($("#age-2").val()) < 18)
+            {
+                return false;
+            }
+            // Needed in some cases if the user went back (clean up)
+            if (currentIndex < newIndex)
+            {
+                // To remove error styles
+                form.find(".body:eq(" + newIndex + ") label.error").remove();
+                form.find(".body:eq(" + newIndex + ") .error").removeClass("error");
+            }
+            form.validate().settings.ignore = ":disabled,:hidden";
+            return form.valid();
+        },
+        onStepChanged: function (event, currentIndex, priorIndex)
+        {
+            // Used to skip the "Warning" step if the user is old enough.
+            if (currentIndex === 2 && Number($("#age-2").val()) >= 18)
+            {
+                form.steps("next");
+            }
+            // Used to skip the "Warning" step if the user is old enough and wants to the previous step.
+            if (currentIndex === 2 && priorIndex === 3)
+            {
+                form.steps("previous");
+            }
+        },
+        onFinishing: function (event, currentIndex)
+        {
+            form.validate().settings.ignore = ":disabled";
+            return form.valid();
+        },
+        onFinished: function (event, currentIndex)
+        {
+            alert("Submitted!");
+        }
+    }).validate({
+        errorPlacement: function errorPlacement(error, element) { element.before(error); },
+        rules: {
+            confirm: {
+                equalTo: "#password-2"
+            }
+        }
+    });
     </script>
 </body>
 </html>

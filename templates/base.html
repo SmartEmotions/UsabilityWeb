@@ -17,10 +17,7 @@
 </head>
 <body>
     {% include "includes/navbar.html" %}
-    <!--  -->
-    {% block Content %}
-    {% endblock %}
-    <!--  -->
+    {% block Content %}{% endblock %}
     {% include "includes/footer.html" %}
     <!-- Scroll To Top Button -->
     <div class="scroll-top-wrapper ">
@@ -32,6 +29,7 @@
     <script type="text/javascript" src="{% static 'js/mdb.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/popper.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/jquery.validate.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.steps.js' %}"></script>
     <script type="text/javascript" src="{% static 'datepicker/js/bootstrap-datepicker.js' %}"></script>
     <script>
         new WOW().init();
@@ -84,17 +82,6 @@
 
         });
     </script>
-    <!-- <script type="text/javascript" src="http://localhost/clickheat/js/clickheat.js"></script>
-    <noscript><p><a href="http://www.dugwood.com/index.html">Heatmap plugin</a></p></noscript>
-    <script type="text/javascript">
-        clickHeatSite = 'localhost:8000';
-        clickHeatGroup = 'http//localhost:8000/works';
-        clickHeatServer = 'http://localhost/clickheat/click.php';
-        initClickHeat();
-    </script> -->
-    {% block JavaScript %}
-
-    {% endblock %}
+    {% block JavaScript %}{% endblock %}
 </body>
-
 </html>
