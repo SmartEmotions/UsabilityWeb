@@ -1,9 +1,4 @@
-<style media="screen">
-    .labeltxt.active
-    {
-        transform:translateY(-10%) !important;
-    }
-</style>
+
 <div class="row">
     <div class="col-lg-4">
         <div class="md-form">
@@ -51,8 +46,8 @@
                     <option value="Industria">
                         Industria
                     </option>
-                    <option value="Social">
-                        Social
+                    <option value="Gobierno">
+                        Gobierno
                     </option>
                     <option value="Transporte">
                         Transporte
@@ -157,9 +152,14 @@
                       id="workc_dscupd"
                       name="workc_dscupd"
                       class="md-textarea"
-                      data-error=".errorDesc">
+                      data-error=".errorDesc"
+                      style="height:145px!important;">
             </textarea>
-            <label for="workc_dscupd" class="labeltxt" id="labeltxt">Descripción Actualizaciones</label>
+            <label for="workc_dscupd"
+                   class="labeltxt"
+                   id="labeltxt"
+                   style="transform: translateY(-10%) !important;pointer-events: none;">
+                Observaciones</label>
         </div>
         <div class="errorDesc text-center"></div>
     </div>

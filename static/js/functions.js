@@ -46,7 +46,7 @@ function drawBar(canvas, labels, data, datal, bg_colrs, prcntags, width, maxheig
                     // }
                 },
                 tooltips: {
-                    position: 'average'
+                    position: 'average',
                 },
                 responsive:true,
                 animation: {
@@ -118,9 +118,10 @@ function drawLines(canv, info, labs, bgcl, fill)
                     }
                 },
                 tooltips: {
-					enabled: true,
-					mode: 'index',
-					position: 'nearest'
+            				enabled: true,
+            				mode: 'index',
+                    intersect:false,
+            				position: 'nearest'
                 },
                 animation: {
                     duration: 4000,
