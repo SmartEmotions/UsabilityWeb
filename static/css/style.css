@@ -17,6 +17,11 @@ input{
     font-size: 1.3rem !important;
 }
 
+.md-form label.active
+{
+    pointer-events: none !important;
+}
+
 b{
     font-weight: bold;
 }

@@ -33,9 +33,8 @@ $('#search-work').validate({
             data: $("#search-work").serialize(),
             beforeSend: function(request, settings)
             {
-                var load = `<i class="fa fa-spinner blue-text fa-pulse fa-3x fa-fw pt-2"
-                               style="padding-left:4rem"></i>
-                            <span class="sr-only">Loading...</span>`;
+                var load = `<i class="fa fa-spinner blue-text fa-pulse fa-3x mt-2"
+                               style="margin-left:3.5rem"></i>`;
                 $("#btn_search").html(load);
             },
             success: function(data)
